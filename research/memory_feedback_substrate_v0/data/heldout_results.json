@@ -1,0 +1,93 @@
+{
+ "manifest_sha256": "4581ac25b02177c99b418ad8c9ebc7a185cc91f929caf44798c092798d0e261f",
+ "cases": [
+  {
+   "case": "H1_unseen_timing",
+   "W": "cal_C3_m",
+   "delta": "s23_hold_timing",
+   "expect": "DEPOSIT",
+   "dw": -0.2250087647342891,
+   "retention_w": 1.0,
+   "steps_writing": 722,
+   "t_washout": 11835,
+   "washout_reached": true,
+   "NC6": true,
+   "D_Q_vs_w0_baseline": 4.035709046004201,
+   "pass": true
+  },
+  {
+   "case": "H2_unseen_dose",
+   "W": "cal_C3_m",
+   "delta": "s23_hold_dose",
+   "expect": "DEPOSIT",
+   "dw": -0.048073155819866153,
+   "retention_w": 1.0,
+   "steps_writing": 708,
+   "t_washout": 11169,
+   "washout_reached": true,
+   "NC6": true,
+   "D_Q_vs_w0_baseline": 1.8047046798385329,
+   "pass": true
+  },
+  {
+   "case": "H3_unseen_past",
+   "W": "cal_C5_strong",
+   "delta": "s23_ov",
+   "expect": "DEPOSIT",
+   "dw": -0.18591169552581777,
+   "retention_w": 1.0,
+   "steps_writing": 722,
+   "t_washout": 11220,
+   "washout_reached": true,
+   "NC6": true,
+   "D_Q_vs_w0_baseline": 3.7695109595519236,
+   "pass": true
+  },
+  {
+   "case": "H4_far_zero_elig",
+   "W": "cal_C3_m",
+   "delta": "p0_middle",
+   "expect": "NO_DEPOSIT",
+   "dw": 0.0,
+   "retention_w": null,
+   "steps_writing": 0,
+   "t_washout": 14637,
+   "washout_reached": true,
+   "NC6": true,
+   "D_Q_vs_w0_baseline": 0.0,
+   "pass": true
+  },
+  {
+   "case": "H5_matched_tc_H3",
+   "W": "cal_C5_strong",
+   "delta": "p0_probe_near_r1c",
+   "expect": "NO_DEPOSIT",
+   "dw": 0.0,
+   "retention_w": null,
+   "steps_writing": 0,
+   "t_washout": 13695,
+   "washout_reached": true,
+   "NC6": true,
+   "D_Q_vs_w0_baseline": 0.0,
+   "pass": true
+  },
+  {
+   "case": "H6_no_past_H1",
+   "W": null,
+   "delta": "s23_hold_timing",
+   "expect": "NO_DEPOSIT",
+   "dw": 0.0,
+   "retention_w": null,
+   "steps_writing": 0,
+   "t_washout": 11835,
+   "washout_reached": true,
+   "NC6": true,
+   "D_Q_vs_w0_baseline": 0.0,
+   "pass": true
+  }
+ ],
+ "passed": 6,
+ "total": 6,
+ "HOLD6": "PASS",
+ "no_retuning": true
+}

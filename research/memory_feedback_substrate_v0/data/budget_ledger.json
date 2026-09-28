@@ -129,6 +129,42 @@
    "item": "stepH_readout_sever_both_arms",
    "note": "sever bundle->readout during Q on NEAR and TC arms",
    "attempted_only": false
+  },
+  {
+   "category": "heldout",
+   "item": "H1_unseen_timing",
+   "note": "sealed hold6 case, single run",
+   "attempted_only": false
+  },
+  {
+   "category": "heldout",
+   "item": "H2_unseen_dose",
+   "note": "sealed hold6 case, single run",
+   "attempted_only": false
+  },
+  {
+   "category": "heldout",
+   "item": "H3_unseen_past",
+   "note": "sealed hold6 case, single run",
+   "attempted_only": false
+  },
+  {
+   "category": "heldout",
+   "item": "H4_far_zero_elig",
+   "note": "sealed hold6 case, single run",
+   "attempted_only": false
+  },
+  {
+   "category": "heldout",
+   "item": "H5_matched_tc_H3",
+   "note": "sealed hold6 case, single run",
+   "attempted_only": false
+  },
+  {
+   "category": "heldout",
+   "item": "H6_no_past_H1",
+   "note": "sealed hold6 case, single run",
+   "attempted_only": false
   }
  ]
 }
