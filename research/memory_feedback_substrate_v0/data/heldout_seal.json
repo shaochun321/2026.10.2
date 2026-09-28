@@ -1,0 +1,5 @@
+{
+ "heldout_manifest_sha256": "4581ac25b02177c99b418ad8c9ebc7a185cc91f929caf44798c092798d0e261f",
+ "sealed": "2026-09-29",
+ "discipline": "sealed before first hold run; no parameter/threshold/window may be tuned from hold outcomes (zero-recall)"
+}

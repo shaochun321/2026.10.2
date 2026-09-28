@@ -1,0 +1,67 @@
+{
+ "round": "MFS0-E0",
+ "cases": [
+  {
+   "case": "H1_unseen_timing",
+   "W": "cal_C3_m",
+   "delta": "s23_hold_timing",
+   "expect": "DEPOSIT"
+  },
+  {
+   "case": "H2_unseen_dose",
+   "W": "cal_C3_m",
+   "delta": "s23_hold_dose",
+   "expect": "DEPOSIT"
+  },
+  {
+   "case": "H3_unseen_past",
+   "W": "cal_C5_strong",
+   "delta": "s23_ov",
+   "expect": "DEPOSIT"
+  },
+  {
+   "case": "H4_far_zero_elig",
+   "W": "cal_C3_m",
+   "delta": "p0_middle",
+   "expect": "NO_DEPOSIT"
+  },
+  {
+   "case": "H5_matched_tc_H3",
+   "W": "cal_C5_strong",
+   "delta": "p0_probe_near_r1c",
+   "expect": "NO_DEPOSIT"
+  },
+  {
+   "case": "H6_no_past_H1",
+   "W": null,
+   "delta": "s23_hold_timing",
+   "expect": "NO_DEPOSIT"
+  }
+ ],
+ "rules": {
+  "DEPOSIT": "|dw|>EPSILON_Z and retention_w>=RETENTION_W_MIN and D_Q_vs_w0_baseline>EPSILON_Q",
+  "NO_DEPOSIT": "|dw| < TC_OVER_NEAR_MAX*|dw_NEAR_stepE|",
+  "both": "washout_reached and NC6_query_write_freeze"
+ },
+ "frozen": {
+  "TAU_E": 0.3,
+  "TAU_M": 0.6,
+  "INITIAL_W": 0.9,
+  "FET_V_THRESHOLD": 0.3,
+  "FET_GM": 1.0,
+  "WRITE_POLARITY": "DEPLETION",
+  "WRITE_DT_CORRECTION": "current = I_write*dt",
+  "EPSILON_E": 1e-06,
+  "EPSILON_M": 1e-06,
+  "EPSILON_Z": 1e-06,
+  "RETENTION_W_MIN": 0.99,
+  "EPSILON_Q": 1e-06,
+  "EPSILON_SEL": 1e-06,
+  "S_MIN": 10.0,
+  "TC_OVER_NEAR_MAX": 0.1,
+  "dw_NEAR_stepE": -0.06078118757703532,
+  "query": "Step C typed phase ramp, Q_STEPS=2000, in place",
+  "washout": "until e<EPSILON_E and M<EPSILON_M (measured)"
+ },
+ "exposure_note": "s23_hold_timing appeared only in the Step C analytic envelope integral (a prediction, not an arm run); p0_probe_near_r1c is the frozen TC; p0_middle / s23_hold_dose / cal_C5_strong have never been run in MFS0."
+}
