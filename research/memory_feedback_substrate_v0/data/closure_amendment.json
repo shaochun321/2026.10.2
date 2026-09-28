@@ -1,0 +1,507 @@
+{
+ "round": "MFS0-E0",
+ "type": "APPEND_ONLY_CLOSURE_AMENDMENT",
+ "date": "2026-09-29",
+ "user_rulings_2026-09-29": {
+  "source": "user acceptance of 'MFS0方案v2评判_2026-09-29.md' recommendations",
+  "R-1": "material route = CAUSAL_REPLAY_REFERENCE + TEMPLATE_TRANSLATION (time-translated qualified typed windows; no live qualification for translated upstream occurrences)",
+  "R-2": "write window = dual-reference, dual-offset compensated complementary branches (u0 = V_s*z, u1 = V_s*(1-z); references may be lowered by V_th for exact linearity); uncompensated version kept only as a bias control",
+  "R-3": "observation = finite-hold observation capacitor + finite physical reset + RC timer (RailLatch not default); the observation state MUST be saturated/clamped, or the alpha_+ distribution over event timing must be pre-registered",
+  "R-4": "drop the '>=10% better than mismatch' gate; an equal-frequency independent feedback copy is a negative reference only",
+  "R-5": "(a) H1 = FAIL(EXPOSED) per project precedent; hold6 = 5/6; effective terminal = A_CONDITIONAL + HOLD_EXPOSURE"
+ },
+ "hold_exposure_audit": {
+  "precedent": {
+   "d21_hold_seal": "hold exposure => FAIL, no re-run",
+   "p0_hold_seal": "hold exposure => FAIL, no re-run (zero-recall)"
+  },
+  "protocol_deviation": "MFS0 heldout_seal.json omitted the 'hold exposure => FAIL' clause present in both precedent seals; the ruling applies the precedent rather than the omission",
+  "original_results_unchanged": "data/heldout_results.json (6/6 as measured) is preserved verbatim",
+  "per_case": {
+   "H1_unseen_timing": {
+    "exposure": "EXPOSED",
+    "evidence": "Step C readout_feasibility computed the same deterministic envelope integral for W=cal_C3_m x s23_hold_timing before sealing: expected_dw = -0.22500876473428955; hold measured -0.2250087647342891",
+    "verdict_after_ruling": "FAIL(EXPOSED)"
+   },
+   "H2_unseen_dose": {
+    "exposure": "NO_MFS0_PRE_EXPOSURE_FOUND",
+    "note": "'dose' is an upstream material name (site23 amp 0.04); MFS0 does not encode dose (ELIGIBILITY/M carry no amplitude DOF)",
+    "verdict_after_ruling": "PASS"
+   },
+   "H3_unseen_past": {
+    "exposure": "NO_MFS0_PRE_EXPOSURE_FOUND",
+    "verdict_after_ruling": "PASS"
+   },
+   "H4_far_zero_elig": {
+    "exposure": "NO_MFS0_PRE_EXPOSURE_FOUND",
+    "note": "exact zero is SELECTIVITY_BY_CONSTRUCTION (DEG-019)",
+    "verdict_after_ruling": "PASS"
+   },
+   "H5_matched_tc_H3": {
+    "exposure": "MATERIAL_REUSED_COMBINATION_UNSEEN",
+    "note": "Delta material p0_probe_near_r1c was the Step E TC arm (with W=cal_C3_m); the cal_C5_strong combination was not run. Exact zero is SELECTIVITY_BY_CONSTRUCTION",
+    "verdict_after_ruling": "PASS"
+   },
+   "H6_no_past_H1": {
+    "exposure": "NO_MFS0_PRE_EXPOSURE_FOUND",
+    "note": "exact zero is SELECTIVITY_BY_CONSTRUCTION (W=0 => e=0)",
+    "verdict_after_ruling": "PASS"
+   }
+  },
+  "hold6_after_ruling": "5/6",
+  "discriminating_cases": [
+   "H2_unseen_dose",
+   "H3_unseen_past"
+  ],
+  "caveat": "H2/H3 are condition-variant checks, not findings statistically independent of the model structure"
+ },
+ "C3_deviation": {
+  "planned": "RailLatch dynamics as measurement-chain positive control (plan §13 / §31 Step C)",
+  "RailLatch_dynamics_positive_control": "NOT_ATTEMPTED",
+  "actually_executed": "w-perturbation readout sensitivity probe",
+  "probe": {
+   "delta_w": 0.001,
+   "rms_response_diff": 0.05292345246506167,
+   "detectable_vs_replay_floor": true
+  },
+  "report_correction": "Step0ABC report's 'RailLatch 正对照 PASS' should read: RailLatch imported only; the executed check is a w-perturbation sensitivity probe",
+  "handling": "recorded as a Step C execution deviation; not part of M1-M6; no re-run"
+ },
+ "structural_necessity": {
+  "items": [
+   "Step G bidirectional transplant",
+   "Step H readout sever",
+   "NC6 query-write freeze"
+  ],
+  "why": "the write gate's readout chain (src/bundle/dst) is never stepped before the query, so w is the only differing state on the query path",
+  "wording": "E0 implemented the intended persistent-carrier causal path; the transplant checks that the implementation obeys that path and screens for hidden readout differences under current conditions. It is not an independent discovery of a new memory degree of freedom."
+ },
+ "budget_runlog": {
+  "runs": [
+   {
+    "run_id": "A-1",
+    "category": "eligibility_calibration",
+    "script": "eligibility_physical",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "W=1"
+   },
+   {
+    "run_id": "A-2",
+    "category": "eligibility_calibration",
+    "script": "eligibility_physical",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "W=0"
+   },
+   {
+    "run_id": "B-1",
+    "category": "modulation_calibration",
+    "script": "modulation_physical",
+    "simulations": 2,
+    "counted_in_original_ledger": false,
+    "note": "first run t_total=12000 (D1+D0), attempted"
+   },
+   {
+    "run_id": "B-2",
+    "category": "modulation_calibration",
+    "script": "modulation_physical",
+    "simulations": 2,
+    "counted_in_original_ledger": true,
+    "note": "re-run t_total=14000 (D1+D0)"
+   },
+   {
+    "run_id": "C-1",
+    "category": "persistent_baseline",
+    "script": "persistent_state_audit",
+    "simulations": null,
+    "counted_in_original_ledger": true,
+    "note": "five questions + C3 sensitivity probe; internal query sub-runs counted as one set"
+   },
+   {
+    "run_id": "C-2",
+    "category": "persistent_baseline",
+    "script": "readout_feasibility",
+    "simulations": null,
+    "counted_in_original_ledger": true,
+    "note": "4 Delta-chain envelope replays + numeric probes, one set"
+   },
+   {
+    "run_id": "C-3",
+    "category": "persistent_baseline",
+    "script": "readout_feasibility",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "Step A W=1 e-envelope re-run"
+   },
+   {
+    "run_id": "X-1",
+    "category": "factorial_sets",
+    "script": "main_factorial.py (main checkout, deleted)",
+    "simulations": 0,
+    "counted_in_original_ledger": false,
+    "note": "invocation 1: crashed before any simulation (PortWindow indexing) — not a run"
+   },
+   {
+    "run_id": "X-2",
+    "category": "factorial_sets",
+    "script": "main_factorial.py (main checkout, deleted)",
+    "simulations": 6,
+    "counted_in_original_ledger": false,
+    "note": "invocation 2: NEAR_e x3 + NEAR_M x3, then crashed (missing TC file); invalid single-carrier design"
+   },
+   {
+    "run_id": "X-3",
+    "category": "factorial_sets",
+    "script": "main_factorial.py (main checkout, deleted)",
+    "simulations": 6,
+    "counted_in_original_ledger": false,
+    "note": "invocation 3: same 6 sims, crashed (manifest path); invalid"
+   },
+   {
+    "run_id": "X-4",
+    "category": "factorial_sets",
+    "script": "main_factorial.py (main checkout, deleted)",
+    "simulations": 12,
+    "counted_in_original_ledger": true,
+    "note": "invocation 4: all 4 conditions x3; invalid by construction (I_write identically 0); ledger item 'invalid_single_carrier_run_2026-09-29' recorded only this one and its note says 12 sims"
+   },
+   {
+    "run_id": "D-1",
+    "category": "timing_points",
+    "script": "timing_freeze",
+    "simulations": 1,
+    "counted_in_original_ledger": false,
+    "note": "Step A W=1 e-envelope re-run (merged, not itemised)"
+   },
+   {
+    "run_id": "D-2",
+    "category": "timing_points",
+    "script": "timing_freeze",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "NEAR s23_ov profile"
+   },
+   {
+    "run_id": "D-3",
+    "category": "timing_points",
+    "script": "timing_freeze",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "TC p0_probe_near_r1c profile"
+   },
+   {
+    "run_id": "E-F00_near",
+    "category": "factorial_sets",
+    "script": "factorial_trials",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "write + washout + in-place query"
+   },
+   {
+    "run_id": "E-F10_near",
+    "category": "factorial_sets",
+    "script": "factorial_trials",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "write + washout + in-place query"
+   },
+   {
+    "run_id": "E-F01_near",
+    "category": "factorial_sets",
+    "script": "factorial_trials",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "write + washout + in-place query"
+   },
+   {
+    "run_id": "E-F11_near",
+    "category": "factorial_sets",
+    "script": "factorial_trials",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "write + washout + in-place query"
+   },
+   {
+    "run_id": "E-TC11",
+    "category": "timing_controls",
+    "script": "factorial_trials",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "write + washout + in-place query"
+   },
+   {
+    "run_id": "E-NC4_eblock",
+    "category": "path_blocks",
+    "script": "factorial_trials",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "write + washout + in-place query"
+   },
+   {
+    "run_id": "E-NC5_mblock",
+    "category": "path_blocks",
+    "script": "factorial_trials",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "write + washout + in-place query"
+   },
+   {
+    "run_id": "G-1",
+    "category": "state_interventions",
+    "script": "state_intervention",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "TC11 recipient re-run + do(w) + query"
+   },
+   {
+    "run_id": "G-2",
+    "category": "state_interventions",
+    "script": "state_intervention",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "F11_near recipient re-run + do(w) + query"
+   },
+   {
+    "run_id": "H-1",
+    "category": "path_blocks",
+    "script": "state_intervention",
+    "simulations": 2,
+    "counted_in_original_ledger": true,
+    "note": "F11_near + TC11 re-runs with severed readout (one ledger item)"
+   },
+   {
+    "run_id": "HO-H1",
+    "category": "heldout",
+    "script": "heldout_eval",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "H1_unseen_timing"
+   },
+   {
+    "run_id": "HO-H2",
+    "category": "heldout",
+    "script": "heldout_eval",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "H2_unseen_dose"
+   },
+   {
+    "run_id": "HO-H3",
+    "category": "heldout",
+    "script": "heldout_eval",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "H3_unseen_past"
+   },
+   {
+    "run_id": "HO-H4",
+    "category": "heldout",
+    "script": "heldout_eval",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "H4_far_zero_elig"
+   },
+   {
+    "run_id": "HO-H5",
+    "category": "heldout",
+    "script": "heldout_eval",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "H5_matched_tc_H3"
+   },
+   {
+    "run_id": "HO-H6",
+    "category": "heldout",
+    "script": "heldout_eval",
+    "simulations": 1,
+    "counted_in_original_ledger": true,
+    "note": "H6_no_past_H1"
+   }
+  ],
+  "total_simulations_listed": 51,
+  "correction": "the invalid factorial actually simulated 24 times across 3 invocations (6+6+12), not 12 as the original ledger note states; one invocation crashed before simulating",
+  "usage_counting_attempted": {
+   "new_g0_trajectories": "0/0",
+   "eligibility_calibration": "2/6",
+   "modulation_calibration": "4/6",
+   "persistent_baseline": "3/6",
+   "timing_points": "2/4",
+   "factorial_sets": "4/4",
+   "timing_controls": "1/3",
+   "state_interventions": "2/4",
+   "path_blocks": "3/3",
+   "heldout": "6/6"
+  },
+  "within_caps_counting_attempted": true,
+  "note": "factorial_sets reaches 4/4 when attempted invocations are counted — at the cap, not over it. Original budget_ledger.json preserved verbatim."
+ },
+ "dependency_supplement": {
+  "label": "POST_HOC_SUPPLEMENT",
+  "audited": "2026-09-29",
+  "meaning": "confirms which version is under review now; does NOT establish that these were sealed at the time (v2 §2.4). Provenance = git commit history.",
+  "items": [
+   {
+    "path": "research/posterior_v0/data/p0_probe_manifest.json",
+    "sha256_now": "d6d529b7baba4a35dac90cae23d2cc30847faa9538c5830e081ac40a87cc9e34",
+    "last_commit": "410eeae"
+   },
+   {
+    "path": "research/d2_recursive_v1/dataset_builder.py",
+    "sha256_now": "a84d59c399d7e411dcce1b0c230c3af4afa9075ffc67c0601dedef6eeec1d040",
+    "last_commit": "449b84a"
+   },
+   {
+    "path": "research/d2_recursive_v1/d21_common.py",
+    "sha256_now": "5e5e8d62a15f4c2335a074e0a388053b346f3e4aace43f96401cdb371d357db4",
+    "last_commit": "e81e067"
+   },
+   {
+    "path": "research/d2_relation_v0/relation_physical_impl.py",
+    "sha256_now": "a14b65ad753be48036a92489b209471123edb5eb3699c1c6d9452bc9c48d92b5",
+    "last_commit": "249e63b"
+   },
+   {
+    "path": "research/d2_relation_v0/d2_common.py",
+    "sha256_now": "c1eb06ab7ae491e1c80bb9fca0257a55f31cc43bbd85d32217906c8e222968ea",
+    "last_commit": "25af802"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/mfs0_common.py",
+    "sha256_now": "c8ec19370f3cde87c3fa4bd5ea1713e5c37c407e1afac57e3c482a6643fb56eb",
+    "last_commit": "0454443"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/preregistration.py",
+    "sha256_now": "11ddb2ba373af38357142fe32aebae6308dc0bdc064aa426f0a67f40b4f0f44a",
+    "last_commit": "9c4dfb8"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/eligibility_physical.py",
+    "sha256_now": "864677491f6b8239cf8a43cc11d8da269d37ad7699b1068352876bec7ead2b15",
+    "last_commit": "6eb9f75"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/semantic_erasure_audit.py",
+    "sha256_now": "4ed1945cd3ca8b23dc4e4fd379c845d8fc03755ecc7ebaf103d59a5601a32d0c",
+    "last_commit": "061d661"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/modulation_physical.py",
+    "sha256_now": "b14582dfe8fc55d01149a0ac44caf12a838e3f324d2659573e95d8036002cee0",
+    "last_commit": "061d661"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/persistent_state_audit.py",
+    "sha256_now": "c0f86589698adc68ca9da690b5e1ea487948b3cc32f7213b7c3fd9213d655e80",
+    "last_commit": "0454443"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/readout_feasibility.py",
+    "sha256_now": "bce04bda6d68cb2fbd171b8cdbb5c0f5130e3cf639ade94acc78713460d17133",
+    "last_commit": "0454443"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/timing_freeze.py",
+    "sha256_now": "6a3a5987dbe5faddc3140ab48014198f7c6bc44abdbd2b599c6c4f5c955f940d",
+    "last_commit": "9ab665f"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/factorial_trials.py",
+    "sha256_now": "999acf64b35b9adb5ef455ce43bce19e57971087936875f5e23660a9b3647f5c",
+    "last_commit": "1deed56"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/state_intervention.py",
+    "sha256_now": "5abcd64e9d6d3e3ad88c9003a6e2189154234384d0ace05bc0b5ee04c7999ef5",
+    "last_commit": "7d6b278"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/heldout_eval.py",
+    "sha256_now": "a36d8c3f4adfc2f20153de288d42f2b3804232a907162db5703126eec5d98aaa",
+    "last_commit": "7bb53a4"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/final_qualification.py",
+    "sha256_now": "bbc6dcbf87ccd9e78c5a17977f580351e0718974eebd77125cb9e35691598438",
+    "last_commit": "2c0ccc3"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/eligibility_characterization.json",
+    "sha256_now": "cb2625a08f12fd3f502cece931cf5e041fad1b7866a888d0a3ffe9cd1e2ac3fc",
+    "last_commit": "6eb9f75"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/modulation_characterization.json",
+    "sha256_now": "fdad88694f9ed54eebb329887be736f0943145624edc1e322e3c388ce362cc79",
+    "last_commit": "061d661"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/persistent_state_characterization.json",
+    "sha256_now": "75cc3ab5d7cd16b54b130c156ac2b0a4499a2fca17755ca40f5f84190ce5576e",
+    "last_commit": "0454443"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/readout_feasibility.json",
+    "sha256_now": "ed28e37e60d60990c63283000f49d03f71cbe6a3ebf5237c40d5e68c28a54a0b",
+    "last_commit": "0454443"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/semantic_erasure_audit.json",
+    "sha256_now": "4a21d69d757b3a076f63374d9c3535dd89bfd64d5995fcd6ee8febb742471689",
+    "last_commit": "061d661"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/timing_manifest.json",
+    "sha256_now": "fcbaed2ae903d7ad5c48b74cfc8beb2809850613bd7eb7077eacc0b77424bb9d",
+    "last_commit": "9ab665f"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/factorial_results.json",
+    "sha256_now": "cec2b87af31fd4b11f30ef7e0422b3c9ab41923d59acd7df69c137038151b4ee",
+    "last_commit": "1deed56"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/query_responses_stepF.json",
+    "sha256_now": "e8250c27f56a1d29cde339d8040096baac53f2c372e79a345e78d64125350057",
+    "last_commit": "1deed56"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/heldout_manifest.json",
+    "sha256_now": "f84c5553623aa79ef22d00614f6a6544f425d2a34fa12cc64afdcd3f357611a4",
+    "last_commit": "7bb53a4"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/heldout_seal.json",
+    "sha256_now": "9baf6a4771e42501d4bedffb423d7c75c033fdc8c1052e8bedcf247a2f27963b",
+    "last_commit": "7bb53a4"
+   },
+   {
+    "path": "research/memory_feedback_substrate_v0/data/heldout_results.json",
+    "sha256_now": "b2f9f790e2dbcb48cc165b7c0eca332866dbb46c1e9a86ccf73b450588f5f944",
+    "last_commit": "855eb9b"
+   }
+  ]
+ },
+ "seal_raw_byte_on_sealing_checkout": {
+  "main_checkout": "J:/cell-cc",
+  "main_checkout_head": "da97cc3",
+  "raw_byte_equal": {
+   "research/d2_relation_v0/data/relation_calibration.json": true,
+   "research/d2_relation_v0/data/relation_occurrence_candidates.csv": true,
+   "research/d2_relation_v0/data/occurrence_parent_manifest.csv": true,
+   "research/d2_recursive_v1/data/relation2_calibration.json": true,
+   "research/d2_recursive_v1/data/relation2_occurrence_candidates.csv": true,
+   "research/d2_recursive_v1/data/relation_occurrence_manifest.csv": true,
+   "research/d2_recursive_v1/data/site23_occurrence_manifest.csv": true,
+   "tss/adapters/relation_occurrence_port_v1.py": true,
+   "tss/adapters/occurrence_port_v2.py": true,
+   "tss/adapters/relation_replay_adapter.py": true,
+   "tss/relations/relation_event_adapter.py": true,
+   "tss/relations/entry_gate.py": true,
+   "tss/relations/history_kernel.py": true,
+   "nexus_v1/components/semiconductor.py": true
+  },
+  "all_equal": true
+ }
+}

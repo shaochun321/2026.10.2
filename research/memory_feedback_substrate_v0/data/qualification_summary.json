@@ -92,7 +92,8 @@
  },
  "terminal_state": {
   "code": "A",
-  "name": "MFS0_PHYSICAL_MEMORY_SUBSTRATE_CANDIDATE_QUALIFIED"
+  "name": "MFS0_PHYSICAL_MEMORY_SUBSTRATE_CANDIDATE_QUALIFIED",
+  "superseded_by": "ruling_applied"
  },
  "allowed_interpretation": "The system has, for the first time, a minimal causal memory substrate candidate made of a historical eligibility, an independent later physical modulation and a persistent structural state.",
  "forbidden_claims": [
@@ -115,5 +116,23 @@
   "MEMRISTOR_UPDATE_MISSING_DT": "research-side workaround current=I_write*dt used for all arms; DEG to be registered at round close"
  },
  "posterior0_relation": "POSTERIOR0_TERMINAL_C_FROZEN unchanged (R-3); this result must not be read as 'Posterior-0 actually passed'.",
- "HARD_STOP": true
+ "HARD_STOP": true,
+ "ruling_applied": {
+  "ruling_id": "RULING-MFS0-R5",
+  "decision_date": "2026-09-29",
+  "decided_by": "user (accepted recommendation (a) in MFS0方案v2评判_2026-09-29.md §三.1)",
+  "effective_terminal": "A_CONDITIONAL",
+  "qualifier": "HOLD_EXPOSURE",
+  "hold6_after_ruling": "5/6",
+  "gates_M1_M6": "unchanged (all PASS as measured)",
+  "disclosures": [
+   "H1 EXPOSED -> FAIL (precedent: hold exposure => FAIL, no re-run)",
+   "MFS0 heldout_seal omitted the exposure clause",
+   "C3 RailLatch dynamics positive control NOT_ATTEMPTED",
+   "Step G/H/NC6 structurally guaranteed",
+   "dependency seal supplemented post hoc"
+  ],
+  "allowed_wording": "Within the replay reference scope, E0 established a conditional minimal causal memory substrate candidate (historical eligibility + independent later physical modulation + persistent w); held-out support is 5/6 with one exposed case.",
+  "detail": "data/closure_amendment.json"
+ }
 }
