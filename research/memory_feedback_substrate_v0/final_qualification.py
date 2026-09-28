@@ -191,6 +191,21 @@ def main() -> int:
                                "actually passed'.",
         "HARD_STOP": True,
     }
+
+    # ── 保护已有 ruling_applied，避免重跑覆盖 ──
+    existing = None
+    try:
+        existing = _load('qualification_summary.json')
+    except FileNotFoundError:
+        pass
+
+    if existing and "superseded_by" in existing.get("terminal_state", {}):
+        # 已有裁定修订，合并而非覆盖
+        out["terminal_state"]["superseded_by"] = existing["terminal_state"]["superseded_by"]
+        if "ruling_applied" in existing:
+            out["ruling_applied"] = existing["ruling_applied"]
+        print("  [MERGE] existing ruling_applied preserved (superseded_by detected)")
+
     M.write_json('qualification_summary.json', out)
 
     print("MFS0-E0 final qualification")
