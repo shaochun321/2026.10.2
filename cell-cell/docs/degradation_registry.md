@@ -394,6 +394,30 @@
 
 ---
 
+### DEG-025: `Memristor.update` 缺 dt 因子（MEMRISTOR_UPDATE_MISSING_DT）
+- **发现时间**: 2026-09-23（MFS0-E0 Step C 装配写入门时发现）；按
+  《MFS0-E0 Step D–H 执行反馈与开工裁定》§9 于 2026-09-29 本轮收口登记
+- **现象**: `nexus_v1/components/semiconductor.py` `Memristor.update`
+  写 `dw = 0.5·current·(pre−post)` 后直接 `apply_dw(dw)`，**没有 Δt**。
+  它自称 Strukov 型，而 Strukov 方程是 `dw/dt ∝ i(t)`，离散化应为
+  `Δw = k·i·Δt`。dt=1.0 旧约定下二者等价；在 dt_G=0.001 下每步写入量
+  放大 1000×——MFS0 实测重叠窗内 I_write 峰≈1.0 ⇒ 单步 dw≈−0.5 ⇒ 一步
+  撞 w_min 钳位。
+- **影响层**: 所有在 dt≠1.0 下调用 `Memristor.update` 的路径。主干目前
+  零调用（评判 E-3），实际影响面为 research 层（MFS0-E0 写入门、A8
+  candidate_z 原型）。
+- **根因**: 与 E-10 同族的步制地雷（同族：`bundle.py` eligibility_tau /
+  da_ema_tau、`compensation.py` 全部 τ 注释）——API 在 dt=1.0 时代设计，
+  时间积分隐含在"每步"里。
+- **处置（未修 production）**: MFS0-E0 在调用侧传 `current = I_write·dt`
+  （`research/memory_feedback_substrate_v0/mfs0_common.py` WriteGate.write），
+  所有臂统一；该参数在本轮实际承载的是**时间积分后的写电流增量**，是
+  量纲债务 workaround，不是新物理参数。修复 production API（加 dt 形参或
+  改名）须另立任务并处理 A8 原型的兼容性。状态: OPEN（workaround 在役）。
+- **关联 DEG**: 无（E-10 同族，见 MFS0-E0 方案评判）
+
+---
+
 ## LIM 已知限制（非退化，结构性未达标项）
 
 > 与 DEG 的区别：DEG 是"曾经工作现在退化/发现的缺陷"；LIM 是"从未达标、
