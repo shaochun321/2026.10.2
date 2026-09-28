@@ -1,0 +1,8 @@
+{
+ "D_Q_blocked": 0.0,
+ "upstream_bundle_current_rms_diff": 0.10636790327667685,
+ "w_preserved_NEAR": true,
+ "w_preserved_TC": true,
+ "pass": true,
+ "BLOCK_LIMITATION": "single-synapse readout: severing the w-bearing path removes the entire Q input, so post-block equality is structurally guaranteed and is not independent evidence. Informative part: the w-dependent difference is still present upstream of the cut (upstream_bundle_current_rms_diff) and vanishes downstream of it, i.e. it enters the future only via this path. Causal-carrier claim rests on Step G."
+}

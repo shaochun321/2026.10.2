@@ -1,0 +1,35 @@
+{
+ "step": "G+H",
+ "pre_intervention_D_Q": 2.1157153108091165,
+ "stepG": {
+  "forward": {
+   "recipient": "TC11",
+   "w_recipient_before": 0.9,
+   "w_after_do": 0.8392188124229647,
+   "only_w_moved": true,
+   "rms_vs_donor_response": 0.0,
+   "pass": true,
+   "NC6_query_write_freeze": true
+  },
+  "reverse": {
+   "recipient": "F11_near",
+   "w_recipient_before": 0.8392188124229647,
+   "w_after_do": 0.9,
+   "only_w_moved": true,
+   "rms_vs_donor_response": 0.0,
+   "pass": true,
+   "NC6_query_write_freeze": true
+  },
+  "bidirectional_transfer": true,
+  "MFS0_MINIMAL_SUFFICIENT_STATE_CANDIDATE": "w",
+  "STOP_DEEPER_DECOMPOSITION": true
+ },
+ "stepH": {
+  "D_Q_blocked": 0.0,
+  "upstream_bundle_current_rms_diff": 0.10636790327667685,
+  "w_preserved_NEAR": true,
+  "w_preserved_TC": true,
+  "pass": true,
+  "BLOCK_LIMITATION": "single-synapse readout: severing the w-bearing path removes the entire Q input, so post-block equality is structurally guaranteed and is not independent evidence. Informative part: the w-dependent difference is still present upstream of the cut (upstream_bundle_current_rms_diff) and vanishes downstream of it, i.e. it enters the future only via this path. Causal-carrier claim rests on Step G."
+ }
+}

@@ -111,6 +111,24 @@
    "item": "stepE_NC5_mblock",
    "note": "Step E arm(s), write + physical washout",
    "attempted_only": false
+  },
+  {
+   "category": "state_interventions",
+   "item": "stepG_forward_wTC<-wNEAR",
+   "note": "do(w_TC <- w_NEAR) after washout, then identical Q",
+   "attempted_only": false
+  },
+  {
+   "category": "state_interventions",
+   "item": "stepG_reverse_wNEAR<-wTC",
+   "note": "do(w_NEAR <- w_TC) after washout, then identical Q",
+   "attempted_only": false
+  },
+  {
+   "category": "path_blocks",
+   "item": "stepH_readout_sever_both_arms",
+   "note": "sever bundle->readout during Q on NEAR and TC arms",
+   "attempted_only": false
   }
  ]
 }
