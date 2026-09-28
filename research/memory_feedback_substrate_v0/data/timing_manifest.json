@@ -1,0 +1,114 @@
+{
+ "step": "D",
+ "NEAR": {
+  "tid": "s23_ov",
+  "class": "NEAR_ELIGIBLE",
+  "reason": "first valid full-overlap candidate; not selected by maximum expected effect (s23_hold_timing predicts 3.7x larger and is kept only as secondary sensitivity condition)",
+  "delta_window": [
+   2927,
+   3566
+  ],
+  "M_write_interval": [
+   2930,
+   3651
+  ],
+  "max_FET_e_during_M_write_interval": 2.030785825528686,
+  "steps_with_nonzero_write_current": 722,
+  "I_write_peak": 0.24624769199859783,
+  "integral_I_dt": 0.12156237515406886,
+  "predicted_dw": -0.06078118757703443
+ },
+ "TIMING_CONTROL": {
+  "tid": "p0_probe_near_r1c",
+  "class": "ZERO_ELIGIBILITY",
+  "delta_window": [
+   5402,
+   6041
+  ],
+  "M_write_interval": [
+   5405,
+   6126
+  ],
+  "max_FET_e_during_M_write_interval": 0.0,
+  "steps_with_nonzero_write_current": 0,
+  "I_write_peak": 0.0,
+  "integral_I_dt": 0.0,
+  "predicted_dw": -0.0,
+  "zero_eligibility_measured": true,
+  "status": "TYPED_INTERFACE_MATCHED_TIMING_CONTROL",
+  "STRICT_TIMING_CONTROL_AVAILABLE": false,
+  "user_ruling": "2026-09-29 conditional acceptance",
+  "LIMITATION": "upstream pulse/support duration differs (NEAR 600 steps vs TC 900 steps). Forced by NF-1 latency drift: a 600-step site23 pulse at late timing produces no occurrence (D2-1 s23_far; Posterior-0 probe1_P600). All other items match, and MFS0 consumes only (t_up, t_rearm) via build_phase_drive, so both drive the M chain with the same 639-step phase ramp."
+ },
+ "timing_classes": {
+  "s23_ov": "NEAR_ELIGIBLE",
+  "s23_hold_timing": "NEAR_ELIGIBLE",
+  "s23_lag": "WEAK_OVERLAP",
+  "s23_far_b": "WEAK_OVERLAP",
+  "p0_probe_near_r1c": "ZERO_ELIGIBILITY"
+ },
+ "timing_match_audit": {
+  "source_identity": {
+   "NEAR": "site23 pulse channel C",
+   "TC": "site23 pulse channel C",
+   "match": true
+  },
+  "stimulus_amplitude": {
+   "NEAR": 0.03,
+   "TC": 0.03,
+   "match": true
+  },
+  "pulse_support_duration_steps": {
+   "NEAR": 600,
+   "TC": 900,
+   "match": false
+  },
+  "typed_input_family": {
+   "NEAR": "site23 PortWindow -> build_phase_drive",
+   "TC": "site23 occurrence -> PortWindow -> build_phase_drive",
+   "match": true
+  },
+  "occurrence_duration_up_to_down": {
+   "NEAR": 139,
+   "TC": 139,
+   "match": true
+  },
+  "occurrence_duration_up_to_rearm": {
+   "NEAR": 639,
+   "TC": 639,
+   "match": true
+  },
+  "physical_path": {
+   "NEAR": "RelationEventAdapter -> PhysicalEntryGate -> PhysicalHistoryKernel (H_tau^Delta)",
+   "TC": "identical (same build_modulation)",
+   "match": true
+  }
+ },
+ "timing_match_mismatches": [
+  "pulse_support_duration_steps"
+ ],
+ "thresholds": {
+  "EPSILON_SEL": 1e-06,
+  "EPSILON_SEL_rule": "max(10 * nowrite_floor, 1e-6)",
+  "nowrite_floor": 0.0,
+  "S_MIN": 10.0,
+  "TC_OVER_NEAR_MAX": 0.1,
+  "ratio_alone_not_pass": true,
+  "predicted_I_z": -0.06078118757703443,
+  "predicted_I_z_basis": "Tier-2: w10=w01=w00=w0 exactly (a sub-threshold factor hard-zeroes I_write), so I_z = dw_11(NEAR); integral of measured e and replayed M envelopes",
+  "predicted_dw_TC": -0.0
+ },
+ "write_current_api_note": "Memristor.update(current=...) receives a time-integrated write-current increment (I_write*dt) in this round: a workaround for the production API missing dt (MEMRISTOR_UPDATE_MISSING_DT, DEG to be registered at round close); applied identically to every arm.",
+ "READY_FOR_MAIN_FACTORIAL": true,
+ "frozen_after_step_d": [
+  "tau_e",
+  "tau_M",
+  "w0",
+  "FET thresholds",
+  "write polarity",
+  "write dt correction",
+  "NEAR",
+  "TIMING CONTROL",
+  "selection thresholds"
+ ]
+}

@@ -87,5 +87,22 @@
   "Step B semantic erasure audit -> physical modulation",
   "Step C persistent baseline -> analytic readout feasibility -> RailLatch positive control"
  ],
- "gate_to_next_batch": "READY_FOR_MAIN_FACTORIAL flips to YES only if Step A, B and C all PASS (plan §34)."
+ "gate_to_next_batch": "READY_FOR_MAIN_FACTORIAL flips to YES only if Step A, B and C all PASS (plan §34).",
+ "step_d_freeze": {
+  "date": "2026-09-29",
+  "resolves_deferred": [
+   "EPSILON_SEL",
+   "S_MIN",
+   "predicted_Iz"
+  ],
+  "EPSILON_SEL": 1e-06,
+  "S_MIN": 10.0,
+  "TC_OVER_NEAR_MAX": 0.1,
+  "predicted_I_z": -0.06078118757703443,
+  "NEAR": "s23_ov",
+  "TIMING_CONTROL": "p0_probe_near_r1c",
+  "TIMING_CONTROL_status": "TYPED_INTERFACE_MATCHED (user ruling 2026-09-29, LIMITATION registered)",
+  "READY_FOR_MAIN_FACTORIAL": true,
+  "source": "data/timing_manifest.json"
+ }
 }
