@@ -1,0 +1,193 @@
+{
+ "step": "E+F",
+ "arms": {
+  "F00_near": {
+   "w0": 0.9,
+   "w_write_end": 0.9,
+   "w_washout": 0.9,
+   "dw": 0.0,
+   "retention_w": null,
+   "t_drive_end": 0,
+   "t_write_end": -1,
+   "steps_with_nonzero_write_current": 0,
+   "integral_I_dt": 0.0,
+   "t_washout": 1,
+   "washout_reached": true,
+   "e_at_washout": 0.0,
+   "M_at_washout": 0.0,
+   "w_before_query": 0.9,
+   "w_after_query": 0.9,
+   "NC6_query_write_freeze": true
+  },
+  "F10_near": {
+   "w0": 0.9,
+   "w_write_end": 0.9,
+   "w_washout": 0.9,
+   "dw": 0.0,
+   "retention_w": null,
+   "t_drive_end": 3970,
+   "t_write_end": -1,
+   "steps_with_nonzero_write_current": 0,
+   "integral_I_dt": 0.0,
+   "t_washout": 8475,
+   "washout_reached": true,
+   "e_at_washout": 9.977277922398332e-07,
+   "M_at_washout": 0.0,
+   "w_before_query": 0.9,
+   "w_after_query": 0.9,
+   "NC6_query_write_freeze": true
+  },
+  "F01_near": {
+   "w0": 0.9,
+   "w_write_end": 0.9,
+   "w_washout": 0.9,
+   "dw": 0.0,
+   "retention_w": null,
+   "t_drive_end": 3565,
+   "t_write_end": -1,
+   "steps_with_nonzero_write_current": 0,
+   "integral_I_dt": 0.0,
+   "t_washout": 11220,
+   "washout_reached": true,
+   "e_at_washout": 0.0,
+   "M_at_washout": 9.98844559334073e-07,
+   "w_before_query": 0.9,
+   "w_after_query": 0.9,
+   "NC6_query_write_freeze": true
+  },
+  "F11_near": {
+   "w0": 0.9,
+   "w_write_end": 0.8392188124229647,
+   "w_washout": 0.8392188124229647,
+   "dw": -0.06078118757703532,
+   "retention_w": 1.0,
+   "t_drive_end": 3970,
+   "t_write_end": 3651,
+   "steps_with_nonzero_write_current": 722,
+   "integral_I_dt": 0.12156237515406886,
+   "t_washout": 11220,
+   "washout_reached": true,
+   "e_at_washout": 1.0597844928636135e-10,
+   "M_at_washout": 9.98844559334073e-07,
+   "w_before_query": 0.8392188124229647,
+   "w_after_query": 0.8392188124229647,
+   "NC6_query_write_freeze": true
+  },
+  "TC11": {
+   "w0": 0.9,
+   "w_write_end": 0.9,
+   "w_washout": 0.9,
+   "dw": 0.0,
+   "retention_w": null,
+   "t_drive_end": 6040,
+   "t_write_end": -1,
+   "steps_with_nonzero_write_current": 0,
+   "integral_I_dt": 0.0,
+   "t_washout": 13695,
+   "washout_reached": true,
+   "e_at_washout": 2.7687776765619422e-14,
+   "M_at_washout": 9.98844559334073e-07,
+   "w_before_query": 0.9,
+   "w_after_query": 0.9,
+   "NC6_query_write_freeze": true
+  },
+  "NC4_eblock": {
+   "w0": 0.9,
+   "w_write_end": 0.9,
+   "w_washout": 0.9,
+   "dw": 0.0,
+   "retention_w": null,
+   "t_drive_end": 3970,
+   "t_write_end": -1,
+   "steps_with_nonzero_write_current": 0,
+   "integral_I_dt": 0.0,
+   "t_washout": 11220,
+   "washout_reached": true,
+   "e_at_washout": 0.0,
+   "M_at_washout": 9.98844559334073e-07,
+   "w_before_query": 0.9,
+   "w_after_query": 0.9,
+   "NC6_query_write_freeze": true
+  },
+  "NC5_mblock": {
+   "w0": 0.9,
+   "w_write_end": 0.9,
+   "w_washout": 0.9,
+   "dw": 0.0,
+   "retention_w": null,
+   "t_drive_end": 3970,
+   "t_write_end": -1,
+   "steps_with_nonzero_write_current": 0,
+   "integral_I_dt": 0.0,
+   "t_washout": 8475,
+   "washout_reached": true,
+   "e_at_washout": 9.977277922398332e-07,
+   "M_at_washout": 0.0,
+   "w_before_query": 0.9,
+   "w_after_query": 0.9,
+   "NC6_query_write_freeze": true
+  }
+ },
+ "M4_selective_persistent_deposition": {
+  "dw_near": -0.06078118757703532,
+  "dw_tc": 0.0,
+  "D_sel": 0.06078118757703532,
+  "S_sel": 60781.18757703533,
+  "tc_over_near": 0.0,
+  "retention_w_near": 1.0,
+  "retention_rule": "|w(t_washout)-w0| / |w(t_write_end)-w0|, measured per arm",
+  "items": {
+   "abs_dw_near_gt_eps_z": true,
+   "D_sel_gt_eps_sel": true,
+   "S_sel_gt_S_min": true,
+   "tc_over_near_lt_0.1": true,
+   "washout_reached_all_arms": true
+  },
+  "MFS0_M4": "PASS"
+ },
+ "I_z_consistency": {
+  "I_z_observed": -0.06078118757703532,
+  "predicted_I_z": -0.06078118757703443,
+  "abs_error": 8.951173136040325e-16,
+  "role": "IMPLEMENTATION_CONSISTENCY_CHECK (§16), not a qualification gate"
+ },
+ "negative_controls": {
+  "NC1_no_past": {
+   "arm": "F01_near",
+   "dw": 0.0,
+   "pass": true
+  },
+  "NC2_no_later": {
+   "arm": "F10_near",
+   "dw": 0.0,
+   "pass": true
+  },
+  "NC3_timing_control": {
+   "arm": "TC11",
+   "dw": 0.0,
+   "pass": true
+  },
+  "NC4_eligibility_path_block": {
+   "arm": "NC4_eblock",
+   "dw": 0.0,
+   "pass": true
+  },
+  "NC5_modulation_path_block": {
+   "arm": "NC5_mblock",
+   "dw": 0.0,
+   "pass": true
+  },
+  "NC6_query_write_freeze": {
+   "pass": true
+  }
+ },
+ "M5_future_causal_action": {
+  "D_Q": 2.1157153108091165,
+  "epsilon_Q": 1e-06,
+  "compared": [
+   "F11_near",
+   "TC11"
+  ],
+  "MFS0_M5": "PASS"
+ }
+}

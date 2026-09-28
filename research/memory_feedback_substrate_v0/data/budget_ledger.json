@@ -87,6 +87,30 @@
    "item": "invalid_single_carrier_run_2026-09-29",
    "note": "design bug: each arm drove only e OR M with the other forced to 0, so I_write=FET_e*FET_M was identically 0 by construction; NEAR also read s23_lag instead of s23_ov. 12 sims ran in the main checkout, results discarded as carrying no physical information (plan §25 attempted_run)",
    "attempted_only": true
+  },
+  {
+   "category": "factorial_sets",
+   "item": "stepE_set_NEAR_2x2",
+   "note": "Step E arm(s), write + physical washout",
+   "attempted_only": false
+  },
+  {
+   "category": "timing_controls",
+   "item": "stepE_TC11",
+   "note": "Step E arm(s), write + physical washout",
+   "attempted_only": false
+  },
+  {
+   "category": "path_blocks",
+   "item": "stepE_NC4_eblock",
+   "note": "Step E arm(s), write + physical washout",
+   "attempted_only": false
+  },
+  {
+   "category": "path_blocks",
+   "item": "stepE_NC5_mblock",
+   "note": "Step E arm(s), write + physical washout",
+   "attempted_only": false
   }
  ]
 }

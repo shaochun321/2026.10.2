@@ -1,0 +1,30 @@
+{
+ "NC1_no_past": {
+  "arm": "F01_near",
+  "dw": 0.0,
+  "pass": true
+ },
+ "NC2_no_later": {
+  "arm": "F10_near",
+  "dw": 0.0,
+  "pass": true
+ },
+ "NC3_timing_control": {
+  "arm": "TC11",
+  "dw": 0.0,
+  "pass": true
+ },
+ "NC4_eligibility_path_block": {
+  "arm": "NC4_eblock",
+  "dw": 0.0,
+  "pass": true
+ },
+ "NC5_modulation_path_block": {
+  "arm": "NC5_mblock",
+  "dw": 0.0,
+  "pass": true
+ },
+ "NC6_query_write_freeze": {
+  "pass": true
+ }
+}
