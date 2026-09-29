@@ -33,7 +33,7 @@
 
 | ID        | 任务描述                                                            | 优先级 | 依赖  | 来源文档            |
 | :-------- | :-------------------------------------------------------------- | :-- | :-- | :-------------- |
-| MFS0-E1 器件设计单 | 可修正预测记忆（z=1−w）：R-1~R-5 已裁定（2026-09-29）。下一步=v2 §10 第二步器件设计单：因果输入适配器 / 有限保持观察电容（须钳位）/ RC 结算计时器 / 物理复位 / 双参考补偿互补写窗（参考下移 V_th）/ 读出；状态表+连接图+逐元件三问+参数可行域（T_obs 两不等式、M 尾迹 ≥0.72 s 间隔）；写前调用 new-component skill | P1 | — | 交叉比对/MFS0方案v2评判_2026-09-29.md §四/§五 + v2 §10 |
+| MFS0-E1 D1 | D0 已完成（FEASIBLE_IN_RATIOS_PENDING_CAUSAL_E，见 research/predictive_memory_v1/D0_DEVICE_DESIGN.md）。D1 第一步：因果驱动适配器 + 重测 e 写入可达窗 → 冻结 T_obs/T_hold/τ_T/C_s/R_S/R_L 绝对值（冻结前报可行域是否非空）→ 方案 §9 D1 八项检查。工作副本=分支 mfs0-e1（mesquite-gecko 只读） | P1 | — | 工作报告/MFS0-E1_D0轮工作报告_2026-09-29.md |
 | MFS0-E0仿真计数补全 | closure_amendment.json C-1/C-2 的 simulations 字段为 null（标注"含内部子运行未计入"），需读日志或重建完整计数；预算合法性结论已确认不受影响（各类在上限内） | P3 | — | MFS0-E0收口追加修订报告 §三 |
 | DEG-025 修复 | Memristor.update 缺 dt（MEMRISTOR_UPDATE_MISSING_DT）：production API 加 dt 形参/改名，处理 A8 candidate_z 兼容；当前 MFS0 调用侧 current=I_write·dt workaround 在役 | P2 | 用户排期 | degradation_registry.md DEG-025 |
 | MFS0 同步主仓 | 主仓 J:/cell-cc（feat/tss-theta）快进同步本轮提交（ff 前比对 untracked 冲突） | P2 | — | MFS0-E0 StepDH 报告 §六 |
@@ -58,6 +58,7 @@
 
 | ID | 任务描述 | 完成日期 | Commit |
 |:---|:---|:---|:---|
+| MFS0-E1 D0 | E0 遗留修复（adc3317：历史/生效分离+真正拒绝覆盖 ALREADY_RULED+NC1~NC6 进终裁+attempted 计入预算，FC1~FC4 全 PASS；两处措辞；撤回 40 个误提交 pyc）+ D0 器件设计单（状态表/两张节点图/可行域表/逐元件三问）：被动负载需 T_clear/T_settle≥99 → 采纳 R-2 复位 k≈99；V_o,min 要求 R_S+R_L≥141；R-3 选参考减法（抑制型需新原语）；时间绝对值待因果 e 窗重测 | 2026-09-29 | adc3317 + 本提交 |
 | E0 终裁覆盖保护 | final_qualification.py 覆盖保护：检测 superseded_by 字段，存在时拒绝覆盖（ALREADY_RULED 报错）；两份报告措辞修正（hold 暴露双判据/C-1/C-2 simulations=null/C3 NOT_ATTEMPTED 修正追加勘误措辞）；仿真计数补全登记 BACKLOG P3 | 2026-09-29 | （本提交） |
 | E0 收口修订 | RULING-MFS0-R5 落地（追加式，数值不动）：closure_amendment.py → closure_amendment.json（R-1~R-5 裁定原文 / hold 逐项暴露审计 H1=FAIL(EXPOSED)、hold6=5/6 / C3 RailLatch 正对照 NOT_ATTEMPTED / Step G·H·NC6 结构必然 / run_id 级 51 次仿真清单，更正无效 factorial 实为 24 次仿真，计入 attempted 仍在上限内（factorial 4/4）/ 28 项依赖 POST_HOC_SUPPLEMENT / 14 项 seal 主仓逐字节相等）；qualification_summary 新增 ruling_applied（A_CONDITIONAL+HOLD_EXPOSURE）+ superseded_by；两份报告追加节 | 2026-09-29 | 65da807 / 报告: 工作报告/MFS0-E0收口追加修订工作报告_2026-09-29.md |
 | MFS0-E1方案v2评判 | 外部《MFS0下一步评判回应与方案v2》评判：v2 全部新数值独立复算一致；接受 7 项纠正（E-2 两端仍可恢复只失无偏性 / E-8 0.8→0.2→0.8 回文反转无效 / E-9 精确 σ 0.0359/0.0127 / E-4 T_obs 为可行域 / E-7 收窄 / E-1 未补偿偏置 p<0.01 破有界 / NC4-5 预算指控撤回）；**撤回"不改终态 A"**——D2-1/P0 先例 hold exposure⇒FAIL、MFS0 封存漏写，H1 应 FAIL，hold6=5/6 不满足我方 A 规则（R-5 新增）；补强：观察态阈上线性 ⇒ α₊ 随 t_Δ 变（须钳位）/互补门失配 ⇒ α₋≠α₊/参考下移 V_th 可精确消阈值/NF-1 为长轨迹非平稳证据/Hτ 尾迹 0.72 s 间隔/计入 attempted 预算仍全合法。R-1~R-4 同意 v2 | 2026-09-29 | （见本提交） |

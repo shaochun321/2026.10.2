@@ -1,0 +1,93 @@
+{
+ "stage": "MFS0-E1 D0 feasibility (analytic only)",
+ "rulings_2026-09-29": {
+  "R-1": "independent copy = branch mfs0-e1 (worktree mfs0-e1), from 4d4e424; mesquite-gecko read-only",
+  "R-2": "independent finite reset branch is REQUIRED",
+  "R-3": "complement gate: compare (a) reference subtraction vs (b) inhibitory normally-on, choose by eps_alpha bound"
+ },
+ "design_budget": {
+  "delta_plateau": 0.01,
+  "delta_settle": 0.01,
+  "delta_clear": 0.01,
+  "eps_alpha": 0.05,
+  "p_task": 0.8
+ },
+ "E1_passive_single_node": {
+  "plateau_bound_G_RsRL": 99.0,
+  "min_Tclear_over_Tsettle": 99.0,
+  "verdict": "passive load alone needs T_clear ≈ 99 x T_settle; adopt R-2 active reset"
+ },
+ "R2_active_reset_min_ratio_by_k": {
+  "0": 99.0,
+  "9": 9.899999999999999,
+  "49": 1.98,
+  "99": 0.99,
+  "199": 0.495
+ },
+ "R2_reading": "with reset conductance k·(1/R_L) during the reset phase, the ratio drops as 1/(1+k); k≈99 brings it to ≈1 (clear as fast as settle). k is set by the reset FET conductance, a DESIGN quantity with a physical cost (reset drain current from the rail).",
+ "E2_V_o_min_examples": {
+  "R_S+R_L=3.0": 33.3,
+  "R_S+R_L=10.0": 10.200000000000001,
+  "R_S+R_L=30.0": 3.5999999999999996,
+  "R_S+R_L=100.0": 1.29
+ },
+ "E2_reading": "V_o,min = θ + G_min·V_REF/gm; a small total load resistance forces a large G_min and a V_o,min well above 0.3 V, tightening the observation-hold inequality V_set·exp(−T_hold/τ_o) ≥ V_o,min.",
+ "E4_target_bias": {
+  "dz_from_eps_alpha": 0.008080808080808133,
+  "bound_delta_clear_plus_p1p_eps": 0.018
+ },
+ "R3_complement_candidates": {
+  "a_reference_subtraction": {
+   "eps_alpha_bound": 0.05,
+   "error_location": "alpha_minus magnitude (y=0 branch gain)",
+   "needs_new_primitive": false,
+   "needs": "a reference node tracking V_H (same supply, matched divider) + a subtraction node; built from Capacitor/MOSFET/PowerRail"
+  },
+  "b_inhibitory_normally_on": {
+   "eps_alpha_bound": 0.05,
+   "error_location": "residual reverse write when y=1 (incomplete turn-off)",
+   "needs_new_primitive": true,
+   "needs": "a normally-on channel turned OFF by s; the repo MOSFET is enhancement-only (conducts above threshold), so this is not available as a primitive — would need a new depletion/inhibitory element with its own Q1-Q3"
+  }
+ },
+ "R3_choice": "(a) reference subtraction — equal first-order ε_α bound to (b), and (b) requires a new non-primitive normally-on element. Choose (a); keep (b) documented.",
+ "timing_feasibility": {
+  "e_write_reachable_old_rel_t_up": [
+   276,
+   2072
+  ],
+  "later_latency_range_steps": [
+   521,
+   637
+  ],
+  "note": "the observation window must close after the latest valid later occurrence (t_on + latency_max + settle) AND the write must finish before e drops below the FET threshold (t_up + 2072 steps under the OLD non-causal drive). With latency up to 637 steps the remaining settle+write budget is at most 1435 steps, minus the later stimulus onset offset. The causal drive (E-6) changes e; this budget is therefore OPEN until D1 re-measures e.",
+  "T_clear_not_in_e_window": "clearing happens AFTER the write, so it costs cycle length (wall clock), not e-window budget"
+ },
+ "joint_feasible_point_ratio_level": {
+  "V_set_max_supply": 2.0,
+  "hold_decay_floor_h": 0.5,
+  "V_o_min_budget": 1.0,
+  "required_Rs_plus_RL_min": 141.42857142857144,
+  "settle_budget_s": 0.1,
+  "C_s_max_for_settle": 0.00015353845319811932,
+  "tau_o_min_for_hold_T_s": "T_hold / ln(1/h) = 1.443·T_hold",
+  "reading": "a consistent point exists in ratio terms: R_S+R_L ≥ 141 (so that V_o,min ≤ 1.0 V within a 2 V supply), C_s ≤ 1.54e-04 so that the latest event settles within 100 steps, τ_o ≥ 1.44·T_hold, plus an active reset with k ≈ 99 to clear as fast as it settles. Absolute values remain OPEN until the causal e window fixes T_hold."
+ },
+ "wall_clock": {
+  "steps_per_experience_estimate": 5783,
+  "basis": "E0 e>1e-3 tail (3783 steps rel. t_up, old drive) + a 2000-step clear/reset allowance",
+  "us_per_step_E0": 33.2,
+  "sec_per_experience": 0.1919956,
+  "D2_600_experiences_x8_streams_hours": 0.2559941333333333,
+  "note": "E0 single-circuit rate; E1 adds 3-4 nodes per step, so expect 1.5-2x"
+ },
+ "OPEN": [
+  "e waveform under causal drive (E-6) → e write window, T_obs upper bound",
+  "R_S, R_L, C_s absolute values (only their ratios are fixed here)",
+  "observation capacitor tau_o and V_set",
+  "RC timer tau_T and threshold",
+  "reset FET conductance k",
+  "V_H reference divider"
+ ],
+ "D0_verdict": "FEASIBLE_IN_RATIOS_PENDING_CAUSAL_E"
+}
