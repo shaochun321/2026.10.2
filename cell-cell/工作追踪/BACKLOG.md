@@ -19,6 +19,7 @@
 
 | ID | 任务描述 | 开始日期 | 当前进度 | 下一步 |
 |:---|:---|:---|:---|:---|
+| 死锁二前置 | 三问审查：G_eff乘法门控的Sources→Bundle→Targets+参数推导（为死锁二主体"STDP目标从方向极性→增益调制"铺路） | 2026-09-30 | 调用new-component skill | 完成三问审查后设计信号路径 |
 | （备注） | **MFS0-E1 终止（2026-09-30决策，v4方案已完整保留未来重启）**——A+B阶段性完成：D0可行域（ρ_max=0.8485）+predictive_memory_device.py（三问PASS）；C超预算2.15×终止（物理约束τ_e=0.300s→T_total≥9.9s不可绕过）；D~F未启动。**决策理由**：A+B已回答核心问题（元件级设计可行），C~F为量的验证（边际收益递减），主线阻塞问题（DA饱和/死锁二）优先级更高。v4方案完整保留为重启入口（含交叉复核补充/4h预算/自动推进条件）。交付：worktree mfs0-e1（adc3317/a108f9e/4669d8f）+阶段性报告+v4方案文档 | 2026-09-30 | A+B COMPLETE, C~F TERMINATED | 转向主线P1任务（死锁二前置/DA-P1 shadow饱和） |
 | （备注） | **MFS0-E0 已终结（生效终态 A_CONDITIONAL + HOLD_EXPOSURE，RULING-MFS0-R5，2026-09-29；§30 硬停止）**——M1~M6 全 PASS 不变；H1 按先例 exposure⇒FAIL，hold6=5/6；原终态 A 区块保留并加 superseded_by。详见 工作报告/MFS0-E0轮工作报告_StepDH_2026-09-29.md 文末追加节 + data/closure_amendment.json | — | — | 进入 MFS0-E1 |
 | （备注·已消费） | **MFS0-E0 方案评判（2026-09-23，ADOPT with amendments，见 交叉比对/MFS0-E0方案评判_2026-09-23.md）**。方案定位=对我方 Posterior-0 D-2 论点的正面回应（元件级设计轮）：Past→e（eligibility 电容）+ Later→M（调制）⇒ Δw（memristive 持久态）→ Future；两阶段（Phase A 物理绑定 / Phase B 持久沉积），六门 MFS0-M1~M6，六终态 A~F。**三项核心勘误**：E-1 §10 的 I_z=(w11−w10)−(w01−w00) 在乘性实现下是恒等式（w01=w10=w00）⇒ 不可证伪，主判据须改 NC3 选择性比值 Δw(NEAR)/Δw(TC)；E-2 物理乘法三档未指定（裸 Python×/双 FET 硬截零[theta_comparator 先例，已有 2026-09-06 用户裁定]/负载线自洽[仅 rail_latch]），§3 禁 if 却允许"ẇ∝e·M 最简近似"自相矛盾；E-4 M5 会撞 LIM-RPREC-READOUT-001（G(w)=1/(10−9.9w) 双曲，低 w 端 ΔG/G=0.117%≪Δw/w=0.97% 且 N-不变）⇒ 可事前解析预见的终态 E 风险，须先选高 w 工作点。**好消息**：时点可达性非硬阻塞（site23 已录窗 3542/4159/4577 + P0 新录 5402/6344 全晚于 W=rc_main），new_g0 预算可声明=0 | 2026-09-23 | 方案评判完毕（E-1~E-12 + R-1~R-4） | 等待 R-1（M(t) 驱动源四选一：ν/Ξ残差/CPG/H_τ，建议 H_τ 或 CPG）+ R-2（乘法档位，建议档2）+ R-3（与 RULING-P0-1 关系，建议保持 OPEN 待 MFS0 完成后合并裁定）+ R-4（初始 w 工作点偏离默认 0.1 改高 w 端） |
@@ -39,7 +40,6 @@
 | MFS0 同步主仓 | 主仓 J:/cell-cc（feat/tss-theta）快进同步本轮提交（ff 前比对 untracked 冲突） | P2 | — | MFS0-E0 StepDH 报告 §六 |
 | DA-P1 shadow饱和 | shadow内部根因：col calcium_rate全饱和(cri_v_clamp=1.0)→加快θ_M或降shadow输入增益；当前仅sg掩盖 | P1 | DA-rebal | STDP修复方案补充_评判与实测修正 §四 |
 | 死锁二 增益调制 | STDP目标从方向极性→增益调制（thermo→yaw插可学习增益门控，分流抑制物理化，走三问） | P1 | DA-rebal PASS | STDP无效根因复核 §六 / 修复方案补充 §四 |
-| 死锁二 前置 | 三问审查：G_eff乘法门控的Sources→Bundle→Targets+参数推导 | P1 | — | 修复方案补充 §四 |
 | T-039b-rerun | T-078 fix-A后重跑J2确认（w_ccw漂移<0.01）                          | P3  | — | — |
 | T-静默MVE | 4束全连接方向涌现MVE（phasic→spinal全连接200k）                      | P3  | 死锁二完成 | 运动势垫支实施方案§9.3 |
 | T-Z验证 | Z轴热觉验证实验（解锁Z轴，热源偏Z±20单位，检验top/bot差异化）      | P3  | — | T-084实施说明 |
@@ -58,7 +58,8 @@
 
 | ID | 任务描述 | 完成日期 | Commit |
 |:---|:---|:---|:---|
-| E0 终裁覆盖保护 | final_qualification.py 覆盖保护：检测 superseded_by 字段，存在时拒绝覆盖（ALREADY_RULED 报错）；两份报告措辞修正（hold 暴露双判据/C-1/C-2 simulations=null/C3 NOT_ATTEMPTED 修正追加勘误措辞）；仿真计数补全登记 BACKLOG P3 | 2026-09-29 | （本提交） |
+| 死锁二 前置 | 三问审查通过：GatedReflexArc 实现（hunger→gain_gate[MOSFET跨导]→thermo_to_yaw.synapse_gain）；Q1生物依据Rudomin&Schmidt1999突触前抑制+Sternson2013动机易化；Q2物理结构Neuron→SynapticBundle(DA-gated STDP)→Neuron→MOSFET→gain标量；Q3参数推导τ=1s匹配hunger/g范围0.3~2.0约束；T-090验证4/4 PASS(E1基线1.0/E2'学习0.150/E3饱和/E4对称) | 2026-09-30 | 44d0add / 26d183d |
+| E0 终裁覆盖保护 | final_qualification.py 覆盖保护：检测 superseded_by 字段，存在时拒绝覆盖（ALREADY_RULED 报错）；两份报告措辞修正（hold 暴露双判据/C-1/C-2 simulations=null/C3 NOT_ATTEMPTED 修正追加勘误措辞）；仿真计数补全登记 BACKLOG P3 | 2026-09-29 | 4d4e424 |
 | E0 收口修订 | RULING-MFS0-R5 落地（追加式，数值不动）：closure_amendment.py → closure_amendment.json（R-1~R-5 裁定原文 / hold 逐项暴露审计 H1=FAIL(EXPOSED)、hold6=5/6 / C3 RailLatch 正对照 NOT_ATTEMPTED / Step G·H·NC6 结构必然 / run_id 级 51 次仿真清单，更正无效 factorial 实为 24 次仿真，计入 attempted 仍在上限内（factorial 4/4）/ 28 项依赖 POST_HOC_SUPPLEMENT / 14 项 seal 主仓逐字节相等）；qualification_summary 新增 ruling_applied（A_CONDITIONAL+HOLD_EXPOSURE）+ superseded_by；两份报告追加节 | 2026-09-29 | 65da807 / 报告: 工作报告/MFS0-E0收口追加修订工作报告_2026-09-29.md |
 | MFS0-E1方案v2评判 | 外部《MFS0下一步评判回应与方案v2》评判：v2 全部新数值独立复算一致；接受 7 项纠正（E-2 两端仍可恢复只失无偏性 / E-8 0.8→0.2→0.8 回文反转无效 / E-9 精确 σ 0.0359/0.0127 / E-4 T_obs 为可行域 / E-7 收窄 / E-1 未补偿偏置 p<0.01 破有界 / NC4-5 预算指控撤回）；**撤回"不改终态 A"**——D2-1/P0 先例 hold exposure⇒FAIL、MFS0 封存漏写，H1 应 FAIL，hold6=5/6 不满足我方 A 规则（R-5 新增）；补强：观察态阈上线性 ⇒ α₊ 随 t_Δ 变（须钳位）/互补门失配 ⇒ α₋≠α₊/参考下移 V_th 可精确消阈值/NF-1 为长轨迹非平稳证据/Hτ 尾迹 0.72 s 间隔/计入 attempted 预算仍全合法。R-1~R-4 同意 v2 | 2026-09-29 | （见本提交） |
 | MFS0-E1评判 | 外部方案《MFS0下一步方案：可修正预测记忆》评判：数学全复算正确（d/15次触底/Var 0.0041026/Brier 0.1641/√p 平衡 2/3/加权 0.4444）；§9-1 E0 收口问题 5 项全属实 + 补 Step G/H/NC6 结构必然性；E-1 软边界写入=无比较器 y−z（恒流测阻，r_min 偏置 z*=p−0.1(1−p)/9.9）/E-2 DEG-019 硬截零在 E1 成偏置源/E-3 写入改 t_c 结算、E0 的 e×M 不可原样复用/E-4 T_obs 受 τ_e 约束（e 写窗止于 W rearm+718 步）/E-5 缺观察 latch+结算计时器/E-6 build_phase_drive 非因果、前缀检查必败/E-7 8×600 次经验素材来源未交代/E-8 iid 流下同频错配期望 Brier 相同→10% 门不可证伪/E-9 ±0.1 门自相关 σ=0.040、逐流 24 检查 26% 随机失败 → **ADOPT with amendments**，R-1~R-4 待裁 | 2026-09-29 | （见本提交） |
