@@ -19,7 +19,7 @@
 
 | ID | 任务描述 | 开始日期 | 当前进度 | 下一步 |
 |:---|:---|:---|:---|:---|
-| 死锁二前置 | 三问审查：G_eff乘法门控的Sources→Bundle→Targets+参数推导（为死锁二主体"STDP目标从方向极性→增益调制"铺路） | 2026-09-30 | 调用new-component skill | 完成三问审查后设计信号路径 |
+| （备注） | **DA-P1 θ_M 修复被 T-091 证伪（2026-09-30）**——theta_m_tau 10000→1000 双臂对照无差异，已回滚；新根因候选=CRI 漏电 τ 量纲漂移，已转 ⏸ 待裁 R-1/R-2（见 工作报告/DA-P1_shadow饱和根因_T091_2026-09-30.md）。死锁二前置已完成（见"已完成"） |
 | （备注） | **MFS0-E1 终止（2026-09-30决策，v4方案已完整保留未来重启）**——A+B阶段性完成：D0可行域（ρ_max=0.8485）+predictive_memory_device.py（三问PASS）；C超预算2.15×终止（物理约束τ_e=0.300s→T_total≥9.9s不可绕过）；D~F未启动。**决策理由**：A+B已回答核心问题（元件级设计可行），C~F为量的验证（边际收益递减），主线阻塞问题（DA饱和/死锁二）优先级更高。v4方案完整保留为重启入口（含交叉复核补充/4h预算/自动推进条件）。交付：worktree mfs0-e1（adc3317/a108f9e/4669d8f）+阶段性报告+v4方案文档 | 2026-09-30 | A+B COMPLETE, C~F TERMINATED | 转向主线P1任务（死锁二前置/DA-P1 shadow饱和） |
 | （备注） | **MFS0-E0 已终结（生效终态 A_CONDITIONAL + HOLD_EXPOSURE，RULING-MFS0-R5，2026-09-29；§30 硬停止）**——M1~M6 全 PASS 不变；H1 按先例 exposure⇒FAIL，hold6=5/6；原终态 A 区块保留并加 superseded_by。详见 工作报告/MFS0-E0轮工作报告_StepDH_2026-09-29.md 文末追加节 + data/closure_amendment.json | — | — | 进入 MFS0-E1 |
 | （备注·已消费） | **MFS0-E0 方案评判（2026-09-23，ADOPT with amendments，见 交叉比对/MFS0-E0方案评判_2026-09-23.md）**。方案定位=对我方 Posterior-0 D-2 论点的正面回应（元件级设计轮）：Past→e（eligibility 电容）+ Later→M（调制）⇒ Δw（memristive 持久态）→ Future；两阶段（Phase A 物理绑定 / Phase B 持久沉积），六门 MFS0-M1~M6，六终态 A~F。**三项核心勘误**：E-1 §10 的 I_z=(w11−w10)−(w01−w00) 在乘性实现下是恒等式（w01=w10=w00）⇒ 不可证伪，主判据须改 NC3 选择性比值 Δw(NEAR)/Δw(TC)；E-2 物理乘法三档未指定（裸 Python×/双 FET 硬截零[theta_comparator 先例，已有 2026-09-06 用户裁定]/负载线自洽[仅 rail_latch]），§3 禁 if 却允许"ẇ∝e·M 最简近似"自相矛盾；E-4 M5 会撞 LIM-RPREC-READOUT-001（G(w)=1/(10−9.9w) 双曲，低 w 端 ΔG/G=0.117%≪Δw/w=0.97% 且 N-不变）⇒ 可事前解析预见的终态 E 风险，须先选高 w 工作点。**好消息**：时点可达性非硬阻塞（site23 已录窗 3542/4159/4577 + P0 新录 5402/6344 全晚于 W=rc_main），new_g0 预算可声明=0 | 2026-09-23 | 方案评判完毕（E-1~E-12 + R-1~R-4） | 等待 R-1（M(t) 驱动源四选一：ν/Ξ残差/CPG/H_τ，建议 H_τ 或 CPG）+ R-2（乘法档位，建议档2）+ R-3（与 RULING-P0-1 关系，建议保持 OPEN 待 MFS0 完成后合并裁定）+ R-4（初始 w 工作点偏离默认 0.1 改高 w 端） |
@@ -38,8 +38,7 @@
 | MFS0-E0仿真计数补全 | closure_amendment.json C-1/C-2 的 simulations 字段为 null（标注"含内部子运行未计入"），需读日志或重建完整计数；预算合法性结论已确认不受影响（各类在上限内） | P3 | — | MFS0-E0收口追加修订报告 §三 |
 | DEG-025 修复 | Memristor.update 缺 dt（MEMRISTOR_UPDATE_MISSING_DT）：production API 加 dt 形参/改名，处理 A8 candidate_z 兼容；当前 MFS0 调用侧 current=I_write·dt workaround 在役 | P2 | 用户排期 | degradation_registry.md DEG-025 |
 | MFS0 同步主仓 | 主仓 J:/cell-cc（feat/tss-theta）快进同步本轮提交（ff 前比对 untracked 冲突） | P2 | — | MFS0-E0 StepDH 报告 §六 |
-| DA-P1 shadow饱和 | shadow内部根因：col calcium_rate全饱和(cri_v_clamp=1.0)→加快θ_M或降shadow输入增益；当前仅sg掩盖 | P1 | DA-rebal | STDP修复方案补充_评判与实测修正 §四 |
-| 死锁二 增益调制 | STDP目标从方向极性→增益调制（thermo→yaw插可学习增益门控，分流抑制物理化，走三问） | P1 | DA-rebal PASS | STDP无效根因复核 §六 / 修复方案补充 §四 |
+| 死锁二 增益调制 | STDP目标从方向极性→增益调制（thermo→yaw插可学习增益门控，分流抑制物理化，走三问） | P1 | DA-P1 PASS（依赖待 R-2 裁定：sg=0.1 下撤源期 DA≈0.07 未被 shadow 顶死） | STDP无效根因复核 §六 / 修复方案补充 §四 |
 | T-039b-rerun | T-078 fix-A后重跑J2确认（w_ccw漂移<0.01）                          | P3  | — | — |
 | T-静默MVE | 4束全连接方向涌现MVE（phasic→spinal全连接200k）                      | P3  | 死锁二完成 | 运动势垫支实施方案§9.3 |
 | T-Z验证 | Z轴热觉验证实验（解锁Z轴，热源偏Z±20单位，检验top/bot差异化）      | P3  | — | T-084实施说明 |
@@ -51,6 +50,7 @@
 | ID | 任务描述 | 暂停原因 | 恢复条件 |
 |:---|:---|:---|:---|
 | T-013 | HC-015（待定） | 用户明确暂缓 | 用户指示 |
+| DA-P1 shadow饱和 | shadow col calcium_rate 爬升至钳位 1.0。θ_M 假设已被 T-091 证伪（exp_t091_shadow_theta_fix.py）；新根因候选：CRI τ=r_leak·C=50 与 dt 同单位，shadow dt=0.01 ⇒ τ=5000 shadow 步（注释称 50 ms/50 步），CRI 近似无漏积分器 | 需方案更新：修 τ 改变 shadow→DA 先验量级，且影响 soma_proj CRI | 用户裁定 R-1（CRI τ 意图单位 a/b/c）+ R-2（死锁二依赖是否放宽） |
 
 ---
 
