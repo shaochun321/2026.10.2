@@ -1,0 +1,26 @@
+{
+  "stage": "C",
+  "title": "短程映射",
+  "status": "TERMINATED_BUDGET_EXCEEDED",
+  "termination_reason": "pilot_speed_test 实测单次耗时 11.5s，外推完整映射需 4.3h，超预算 2.15×（预算 120 min）",
+  "evidence": {
+    "measured_runtime_single_trial_dt0001": 11.5,
+    "measured_runtime_single_trial_unit": "seconds",
+    "n_steps_per_trial": 308500,
+    "pilot_design": "p=0.5, r=1.0, dt=0.001, 50 trials × 3 dt levels",
+    "pilot_projected_minutes": 28.75,
+    "full_mapping_design": "9 points × 3 dt levels × 50 trials = 1350 trials",
+    "full_mapping_projected_minutes": 258.75,
+    "budget_minutes": 120,
+    "overage_factor": 2.15
+  },
+  "v3_reference": "§8 停止规则：预算耗尽 → 停止，交付已完成阶段",
+  "stage_a_warning": "阶段 A 已估算 11.5~23.0 h，超预算 5.75~11.5 倍",
+  "deliverables": {
+    "A": "COMPLETE (d0_feasibility.py → d0_feasibility.json + D0_DEVICE_DESIGN.md)",
+    "B": "COMPLETE (predictive_memory_device.py + B_DEVICE_DESIGN.md，三问 PASS)",
+    "C": "TERMINATED (pilot 测速完成，完整映射未执行)"
+  },
+  "next_steps": "按 v3 §8，交付 A+B 成果；C~F 阶段需要优化（降低 T_settle / 增大 dt / 减少试验次数）或接受长墙钟",
+  "timestamp": "2026-09-30T02:47:00Z"
+}
