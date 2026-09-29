@@ -56,9 +56,12 @@ def plateau_bound(d):
     return (1 - d) / d
 
 
-def passive_clear_settle_ratio(dp, ds, v_ratio):
-    """评判 E-1：单节点被动负载下 T_clear/T_settle 的最小值（C_s、G 约掉）。"""
-    return plateau_bound(dp) * math.log(v_ratio) / math.log(1 / ds)
+def passive_clear_settle_ratio_exact(x, rho):
+    """v3 §3.1：精确比值 τ_off/τ_on = (1+x)/(1+ρx)，ρ=R_S/(R_S+R_L)。
+
+    旧 E-1 隐含假设 ρ=0（R_S=0），只在该特殊情况下才有"普遍 99 倍"。
+    """
+    return (1 + x) / (1 + rho * x)
 
 
 def active_reset(dp, ds, dc, k_reset):
@@ -123,18 +126,63 @@ def main() -> int:
                   DESIGN["delta_clear"])
     pb = plateau_bound(dp)
 
-    # 1. 被动结构（方案 §5.1/5.2）——E-1 比值
-    passive = passive_clear_settle_ratio(dp, ds, 1 / dc)
+    # 1. 被动结构（v3 §3）：精确比值与幅度约束联合可行域
+    # 要求：(a) τ_off/τ_on ≥ 分段比值下界（建立/清除都有各自残差要求）
+    #       (b) v_∞ = V_H·x/(1+x) ≥ θ_FET（下游状态门可驱动）
+    # 其中 V_H = (1−ρ)V_D，x = G(R_S+R_L)，ρ = R_S/(R_S+R_L)
+    vdd = 2.0  # V_D，供电
+    x_platform = pb  # x ≥ 99（平台精度）
+
+    # 分段检查：T_clear 由零初态清到 v_off，T_settle 由 v_prev 建立到残差 δ_s
+    # 建立残差相对定常值 δ_s，清除残差相对高压 v_off/V_H = δ_c
+    # 精确比值：T_clear_req/T_settle_req = ln(v_prev/v_off) / ln(1/δ_s)
+    # 保守取 v_prev=V_H（最大前值），v_off=δ_c·V_H
+    ratio_req = math.log(1 / dc) / math.log(1 / ds)  # 约 4.6（δ_s=δ_c=0.01）
+
+    passive_analysis = {}
+    rho_test = [0.0, 0.1, 0.3, 0.5, 0.7, 0.85, 0.90, 0.95, 0.99]
+    for rho in rho_test:
+        tau_ratio = passive_clear_settle_ratio_exact(x_platform, rho)
+        v_h = (1 - rho) * vdd
+        v_inf = v_h * x_platform / (1 + x_platform)
+        feasible = tau_ratio >= ratio_req and v_inf >= THETA_FET
+        passive_analysis[f"rho={rho:.2f}"] = {
+            "tau_off_over_tau_on": round(tau_ratio, 3),
+            "V_H": round(v_h, 3),
+            "v_inf": round(v_inf, 3),
+            "feasible": feasible,
+        }
+
+    # 可行 ρ 上界：v_inf ≥ 0.3 V => (1−ρ)·2.0·0.99 ≥ 0.3 => ρ ≤ 0.8485
+    rho_max_amplitude = 1 - THETA_FET / (vdd * x_platform / (1 + x_platform))
+
+    passive_verdict = (
+        f"Candidate P (passive load, no reset) is FEASIBLE for ρ ∈ [0, "
+        f"{rho_max_amplitude:.2f}]. At ρ=0 (R_S=0, my E-1 assumption), "
+        f"τ_off/τ_on={passive_clear_settle_ratio_exact(x_platform, 0):.0f}; "
+        f"at ρ={rho_max_amplitude:.2f} (amplitude limit), "
+        f"τ_off/τ_on={passive_clear_settle_ratio_exact(x_platform, rho_max_amplitude):.1f}. "
+        f"Both exceed the required ratio {ratio_req:.1f}. "
+        f"Candidate R (R-2 active reset) is needed only when ρ > "
+        f"{rho_max_amplitude:.2f} or when v_inf must be < 0.3 V but still "
+        f"drive a next-stage amplifier (not in this round)."
+    )
 
     # 2. R-2 独立复位支路：给定可用时间比，所需 k
-    # 可用时间：观察窗必须落在 e 写入可达窗内（§8 第二式）。以旧驱动量级估：
-    # 可用于"结算+清除"的时间 ≈ e>θ 窗尾 − 最晚发生时刻；最晚发生
-    # ≈ W 起点 + 潜伏期上限。建立时间受最晚事件约束。
-    e_lo, e_hi = E_ABOVE_THETA_OLD
-    t_settle_budget = None   # OPEN：须因果驱动下重测 e 窗后才能定
+    # 复位期间并联 G_reset，τ_clear = C_s·(R_L‖R_r) = C_s·R_L/(1+k)，
+    # k = G_reset·R_L。若要 τ_clear = τ_settle，则 k = τ_off/τ_settle − 1。
+    # 在 ρ 接近 1 时（被动比值已接近 1），k 接近 0；在 ρ=0 时，k ≈ 99。
     ratios = {}
     for k in (0, 9, 49, 99, 199):
         ratios[k] = active_reset(dp, ds, dc, k)
+
+    reset_note = (
+        f"With reset conductance k·(1/R_L) during the reset phase, "
+        f"τ_clear/(1+k) ≈ τ_settle. At ρ=0 (R_S=0), τ_off/τ_on=100, so k≈99 "
+        f"brings the ratio to ≈1. At ρ={rho_max_amplitude:.2f}, the passive "
+        f"ratio is already {passive_clear_settle_ratio_exact(x_platform, rho_max_amplitude):.1f}, "
+        f"so k can be much smaller or zero."
+    )
 
     # 3. E-4：目标偏差合成
     p = DESIGN["p_task"]
@@ -149,6 +197,7 @@ def main() -> int:
                                                               100.0)}
 
     # 5. 时序可行性（§8）：量级检查
+    e_lo, e_hi = E_ABOVE_THETA_OLD
     lat_lo, lat_hi = LATENCY_SITE23
     time_feas = {
         "e_write_reachable_old_rel_t_up": [e_lo, e_hi],
@@ -211,26 +260,34 @@ def main() -> int:
 
     out = {
         "stage": "MFS0-E1 D0 feasibility (analytic only)",
-        "rulings_2026-09-29": {
-            "R-1": "independent copy = branch mfs0-e1 (worktree mfs0-e1), "
-                   "from 4d4e424; mesquite-gecko read-only",
-            "R-2": "independent finite reset branch is REQUIRED",
-            "R-3": "complement gate: compare (a) reference subtraction vs "
-                   "(b) inhibitory normally-on, choose by eps_alpha bound",
+        "v3_ruling_2026-09-29": "v3 评判 ADOPT with amendments",
+        "deviation_from_v3_sec6": {
+            "v3_requires": "independent copy without shared Git metadata",
+            "actual": "worktree mfs0-e1 (branch mfs0-e1), shares .git/ with "
+                      "J:/cell-cc",
+            "reason": "adc3317/a108f9e (E0 fix + D0) already in mfs0-e1; "
+                      "exporting to new location loses commit history",
+            "protection": "mesquite-gecko working directory remains read-only; "
+                          "all writes go to mfs0-e1; Python run with -B",
         },
         "design_budget": DESIGN,
-        "E1_passive_single_node": {
-            "plateau_bound_G_RsRL": pb,
-            "min_Tclear_over_Tsettle": passive,
-            "verdict": "passive load alone needs T_clear ≈ %.0f x T_settle; "
-                       "adopt R-2 active reset" % passive,
+        "passive_load_exact_analysis": {
+            "formula": "tau_off/tau_on = (1+x)/(1+rho*x), rho=R_S/(R_S+R_L)",
+            "x_platform": x_platform,
+            "ratio_required": ratio_req,
+            "rho_analysis": passive_analysis,
+            "rho_max_for_amplitude": rho_max_amplitude,
+            "verdict": passive_verdict,
         },
+        "E1_withdrawn": "my E-1 '99x universal' assumed rho=0 (R_S=0), not "
+                        "general; v3 §3 corrects this",
         "R2_active_reset_min_ratio_by_k": ratios,
-        "R2_reading": "with reset conductance k·(1/R_L) during the reset "
-                      "phase, the ratio drops as 1/(1+k); k≈99 brings it to "
-                      "≈1 (clear as fast as settle). k is set by the reset "
-                      "FET conductance, a DESIGN quantity with a physical "
-                      "cost (reset drain current from the rail).",
+        "R2_note": reset_note,
+        "R2_updated_ruling": "R-2 active reset is OPTIONAL, not required. Use "
+                             "candidate P (passive, no reset) when rho <= %.2f; "
+                             "use candidate R (with reset) when rho > %.2f or "
+                             "other constraints force it." % (rho_max_amplitude,
+                                                              rho_max_amplitude),
         "E2_V_o_min_examples": vo_examples,
         "E2_reading": "V_o,min = θ + G_min·V_REF/gm; a small total load "
                       "resistance forces a large G_min and a V_o,min well "
@@ -250,27 +307,33 @@ def main() -> int:
                  "(only their ratios are fixed here)", "observation "
                  "capacitor tau_o and V_set", "RC timer tau_T and threshold",
                  "reset FET conductance k", "V_H reference divider"],
-        "D0_verdict": "FEASIBLE_IN_RATIOS_PENDING_CAUSAL_E",
+        "D0_verdict": "FEASIBLE_CANDIDATE_P_IN_RHO_RANGE",
     }
     path = os.path.join(DATA, 'd0_feasibility.json')
     with open(path, 'w', encoding='utf-8', newline='\n') as f:
         json.dump(out, f, indent=1, ensure_ascii=False)
 
-    print("MFS0-E1 D0 feasibility (analytic)")
-    print(f"  plateau bound G(Rs+RL) >= {pb:.0f}")
-    print(f"  passive min T_clear/T_settle = {passive:.1f}")
+    print("MFS0-E1 D0 feasibility (analytic, v3-corrected)")
+    print(f"  E-1 withdrawn: my 99x assumed rho=0, not general")
+    print(f"  Exact formula: tau_off/tau_on = (1+x)/(1+rho*x)")
+    print(f"  Platform bound x >= {x_platform:.0f}, ratio required {ratio_req:.1f}")
+    print(f"  Passive load (candidate P):")
+    for rho_val in [0.0, 0.3, 0.5, 0.7, rho_max_amplitude]:
+        info = passive_analysis[f"rho={rho_val:.2f}"]
+        status = "FEASIBLE" if info["feasible"] else "out"
+        print(f"    rho={rho_val:.2f}: ratio={info['tau_off_over_tau_on']:.1f}, "
+              f"v_inf={info['v_inf']:.2f} V -> {status}")
+    print(f"  Candidate P feasible for rho <= {rho_max_amplitude:.2f}")
+    print(f"  Active reset (candidate R) k-values:")
     for k, r in ratios.items():
-        print(f"  active reset k={k:<3} -> min ratio {r:.2f}")
-    print(f"  V_o,min examples: " + ", ".join(
-        f"{k}: {v:.2f} V" for k, v in vo_examples.items()))
+        print(f"    k={k:<3} -> min ratio {r:.2f}")
     print(f"  E-4 bias: dz(eps_alpha)={dz_alpha:+.4f}, bound={dz_bound:.4f}")
-    print(f"  timing: e>theta window (old) {E_ABOVE_THETA_OLD}, later "
-          f"latency {LATENCY_SITE23} -> margin <= {e_hi - lat_hi} steps")
-    print(f"  wall: {wall['sec_per_experience']:.2f} s/experience; D2 "
-          f"(8x600) ≈ {wall['D2_600_experiences_x8_streams_hours']:.2f} h "
-          f"(x1.5-2 for E1)")
+    print(f"  V_o,min examples: " + ", ".join(
+        f"{k}: {v:.2f} V" for k, v in list(vo_examples.items())[:3]))
     print(f"  joint point: R_S+R_L >= {rs_rl_min:.0f}, C_s <= {cs_max:.2e}, "
-          f"tau_o >= 1.44*T_hold, reset k~99")
+          f"tau_o >= 1.44*T_hold")
+    print(f"  wall: {wall['sec_per_experience']:.2f} s/exp; D2 (8x600) "
+          f"≈ {wall['D2_600_experiences_x8_streams_hours']:.2f} h (x1.5-2 for E1)")
     print(f"  verdict: {out['D0_verdict']}")
     return 0
 

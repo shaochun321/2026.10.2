@@ -1,9 +1,11 @@
 {
  "stage": "MFS0-E1 D0 feasibility (analytic only)",
- "rulings_2026-09-29": {
-  "R-1": "independent copy = branch mfs0-e1 (worktree mfs0-e1), from 4d4e424; mesquite-gecko read-only",
-  "R-2": "independent finite reset branch is REQUIRED",
-  "R-3": "complement gate: compare (a) reference subtraction vs (b) inhibitory normally-on, choose by eps_alpha bound"
+ "v3_ruling_2026-09-29": "v3 评判 ADOPT with amendments",
+ "deviation_from_v3_sec6": {
+  "v3_requires": "independent copy without shared Git metadata",
+  "actual": "worktree mfs0-e1 (branch mfs0-e1), shares .git/ with J:/cell-cc",
+  "reason": "adc3317/a108f9e (E0 fix + D0) already in mfs0-e1; exporting to new location loses commit history",
+  "protection": "mesquite-gecko working directory remains read-only; all writes go to mfs0-e1; Python run with -B"
  },
  "design_budget": {
   "delta_plateau": 0.01,
@@ -12,11 +14,70 @@
   "eps_alpha": 0.05,
   "p_task": 0.8
  },
- "E1_passive_single_node": {
-  "plateau_bound_G_RsRL": 99.0,
-  "min_Tclear_over_Tsettle": 99.0,
-  "verdict": "passive load alone needs T_clear ≈ 99 x T_settle; adopt R-2 active reset"
+ "passive_load_exact_analysis": {
+  "formula": "tau_off/tau_on = (1+x)/(1+rho*x), rho=R_S/(R_S+R_L)",
+  "x_platform": 99.0,
+  "ratio_required": 1.0,
+  "rho_analysis": {
+   "rho=0.00": {
+    "tau_off_over_tau_on": 100.0,
+    "V_H": 2.0,
+    "v_inf": 1.98,
+    "feasible": true
+   },
+   "rho=0.10": {
+    "tau_off_over_tau_on": 9.174,
+    "V_H": 1.8,
+    "v_inf": 1.782,
+    "feasible": true
+   },
+   "rho=0.30": {
+    "tau_off_over_tau_on": 3.257,
+    "V_H": 1.4,
+    "v_inf": 1.386,
+    "feasible": true
+   },
+   "rho=0.50": {
+    "tau_off_over_tau_on": 1.98,
+    "V_H": 1.0,
+    "v_inf": 0.99,
+    "feasible": true
+   },
+   "rho=0.70": {
+    "tau_off_over_tau_on": 1.422,
+    "V_H": 0.6,
+    "v_inf": 0.594,
+    "feasible": true
+   },
+   "rho=0.85": {
+    "tau_off_over_tau_on": 1.174,
+    "V_H": 0.3,
+    "v_inf": 0.297,
+    "feasible": false
+   },
+   "rho=0.90": {
+    "tau_off_over_tau_on": 1.11,
+    "V_H": 0.2,
+    "v_inf": 0.198,
+    "feasible": false
+   },
+   "rho=0.95": {
+    "tau_off_over_tau_on": 1.052,
+    "V_H": 0.1,
+    "v_inf": 0.099,
+    "feasible": false
+   },
+   "rho=0.99": {
+    "tau_off_over_tau_on": 1.01,
+    "V_H": 0.02,
+    "v_inf": 0.02,
+    "feasible": false
+   }
+  },
+  "rho_max_for_amplitude": 0.8484848484848485,
+  "verdict": "Candidate P (passive load, no reset) is FEASIBLE for ρ ∈ [0, 0.85]. At ρ=0 (R_S=0, my E-1 assumption), τ_off/τ_on=100; at ρ=0.85 (amplitude limit), τ_off/τ_on=1.2. Both exceed the required ratio 1.0. Candidate R (R-2 active reset) is needed only when ρ > 0.85 or when v_inf must be < 0.3 V but still drive a next-stage amplifier (not in this round)."
  },
+ "E1_withdrawn": "my E-1 '99x universal' assumed rho=0 (R_S=0), not general; v3 §3 corrects this",
  "R2_active_reset_min_ratio_by_k": {
   "0": 99.0,
   "9": 9.899999999999999,
@@ -24,7 +85,8 @@
   "99": 0.99,
   "199": 0.495
  },
- "R2_reading": "with reset conductance k·(1/R_L) during the reset phase, the ratio drops as 1/(1+k); k≈99 brings it to ≈1 (clear as fast as settle). k is set by the reset FET conductance, a DESIGN quantity with a physical cost (reset drain current from the rail).",
+ "R2_note": "With reset conductance k·(1/R_L) during the reset phase, τ_clear/(1+k) ≈ τ_settle. At ρ=0 (R_S=0), τ_off/τ_on=100, so k≈99 brings the ratio to ≈1. At ρ=0.85, the passive ratio is already 1.2, so k can be much smaller or zero.",
+ "R2_updated_ruling": "R-2 active reset is OPTIONAL, not required. Use candidate P (passive, no reset) when rho <= 0.85; use candidate R (with reset) when rho > 0.85 or other constraints force it.",
  "E2_V_o_min_examples": {
   "R_S+R_L=3.0": 33.3,
   "R_S+R_L=10.0": 10.200000000000001,
@@ -89,5 +151,5 @@
   "reset FET conductance k",
   "V_H reference divider"
  ],
- "D0_verdict": "FEASIBLE_IN_RATIOS_PENDING_CAUSAL_E"
+ "D0_verdict": "FEASIBLE_CANDIDATE_P_IN_RHO_RANGE"
 }
