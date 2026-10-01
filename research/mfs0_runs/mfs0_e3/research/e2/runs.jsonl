@@ -1,0 +1,80 @@
+{"stage": "DEV", "run_id": "dev_checks_r0", "wall_s": 46.9469952583313, "note": "development checks, dev seeds 99xxx", "t_end": 1790788577.6581092}
+{"stage": "DEV", "run_id": "dev_checks_r0", "wall_s": 52.73553442955017, "note": "development checks, dev seeds 99xxx", "t_end": 1790788680.9001508}
+{"stage": "DEV", "run_id": "dev_pipeline_smoke", "wall_s": 1035.3990063667297, "note": "dev seeds; parallel costs summed", "t_end": 1790789751.878427}
+{"stage": "FORMAL", "run_id": "main_01_full", "wall_s": 183.16028547286987, "note": "parallel worker; cost summed", "t_end": 1790790256.7790945}
+{"stage": "FORMAL", "run_id": "main_01_no_write", "wall_s": 78.99116063117981, "note": "parallel worker; cost summed", "t_end": 1790790256.7798572}
+{"stage": "FORMAL", "run_id": "main_01_shared", "wall_s": 87.35453772544861, "note": "parallel worker; cost summed", "t_end": 1790790256.7806811}
+{"stage": "FORMAL", "run_id": "main_00_full", "wall_s": 184.0347580909729, "note": "parallel worker; cost summed", "t_end": 1790790257.3652987}
+{"stage": "FORMAL", "run_id": "main_00_no_write", "wall_s": 79.136470079422, "note": "parallel worker; cost summed", "t_end": 1790790257.3661754}
+{"stage": "FORMAL", "run_id": "main_00_shared", "wall_s": 86.48513436317444, "note": "parallel worker; cost summed", "t_end": 1790790257.3666532}
+{"stage": "FORMAL", "run_id": "main_02_full", "wall_s": 184.55170035362244, "note": "parallel worker; cost summed", "t_end": 1790790257.8597388}
+{"stage": "FORMAL", "run_id": "main_02_no_write", "wall_s": 79.12575459480286, "note": "parallel worker; cost summed", "t_end": 1790790257.8603692}
+{"stage": "FORMAL", "run_id": "main_02_shared", "wall_s": 86.94186067581177, "note": "parallel worker; cost summed", "t_end": 1790790257.8608422}
+{"stage": "FORMAL", "run_id": "main_03_full", "wall_s": 185.2397267818451, "note": "parallel worker; cost summed", "t_end": 1790790261.0025225}
+{"stage": "FORMAL", "run_id": "main_03_no_write", "wall_s": 79.33261108398438, "note": "parallel worker; cost summed", "t_end": 1790790261.003392}
+{"stage": "FORMAL", "run_id": "main_03_shared", "wall_s": 89.14471626281738, "note": "parallel worker; cost summed", "t_end": 1790790261.0039651}
+{"stage": "FORMAL", "run_id": "main_04_full", "wall_s": 192.4530906677246, "note": "parallel worker; cost summed", "t_end": 1790790633.1307497}
+{"stage": "FORMAL", "run_id": "main_04_no_write", "wall_s": 90.74036049842834, "note": "parallel worker; cost summed", "t_end": 1790790633.131442}
+{"stage": "FORMAL", "run_id": "main_04_shared", "wall_s": 92.98493814468384, "note": "parallel worker; cost summed", "t_end": 1790790633.1318462}
+{"stage": "FORMAL", "run_id": "main_05_full", "wall_s": 193.39884757995605, "note": "parallel worker; cost summed", "t_end": 1790790633.8028004}
+{"stage": "FORMAL", "run_id": "main_05_no_write", "wall_s": 89.74768686294556, "note": "parallel worker; cost summed", "t_end": 1790790633.8034737}
+{"stage": "FORMAL", "run_id": "main_05_shared", "wall_s": 93.14692950248718, "note": "parallel worker; cost summed", "t_end": 1790790633.8039114}
+{"stage": "FORMAL", "run_id": "main_06_full", "wall_s": 204.25775146484375, "note": "parallel worker; cost summed", "t_end": 1790790655.8640046}
+{"stage": "FORMAL", "run_id": "main_06_no_write", "wall_s": 97.29169917106628, "note": "parallel worker; cost summed", "t_end": 1790790655.8646853}
+{"stage": "FORMAL", "run_id": "main_06_shared", "wall_s": 96.2904372215271, "note": "parallel worker; cost summed", "t_end": 1790790655.8651302}
+{"stage": "FORMAL", "run_id": "main_07_full", "wall_s": 202.09602522850037, "note": "parallel worker; cost summed", "t_end": 1790790659.2186732}
+{"stage": "FORMAL", "run_id": "main_07_no_write", "wall_s": 99.55305624008179, "note": "parallel worker; cost summed", "t_end": 1790790659.219384}
+{"stage": "FORMAL", "run_id": "main_07_shared", "wall_s": 96.41933941841125, "note": "parallel worker; cost summed", "t_end": 1790790659.2197893}
+{"stage": "STRESS", "run_id": "stress_0", "wall_s": 807.7361741065979, "note": "parallel worker", "t_end": 1790790739.6973805}
+{"stage": "STRESS", "run_id": "stress_1", "wall_s": 823.5465018749237, "note": "parallel worker", "t_end": 1790790755.5470767}
+{"stage": "FORMAL", "run_id": "main_08_full", "wall_s": 193.98732733726501, "note": "parallel worker; cost summed", "t_end": 1790790993.3632338}
+{"stage": "FORMAL", "run_id": "main_08_no_write", "wall_s": 78.74424982070923, "note": "parallel worker; cost summed", "t_end": 1790790993.36402}
+{"stage": "FORMAL", "run_id": "main_08_shared", "wall_s": 87.3439245223999, "note": "parallel worker; cost summed", "t_end": 1790790993.364498}
+{"stage": "FORMAL", "run_id": "main_09_full", "wall_s": 194.81167578697205, "note": "parallel worker; cost summed", "t_end": 1790790994.2525444}
+{"stage": "FORMAL", "run_id": "main_09_no_write", "wall_s": 78.14496517181396, "note": "parallel worker; cost summed", "t_end": 1790790994.2533603}
+{"stage": "FORMAL", "run_id": "main_09_shared", "wall_s": 87.36283230781555, "note": "parallel worker; cost summed", "t_end": 1790790994.2538047}
+{"stage": "FORMAL", "run_id": "main_10_full", "wall_s": 191.5004014968872, "note": "parallel worker; cost summed", "t_end": 1790791015.7095134}
+{"stage": "FORMAL", "run_id": "main_10_no_write", "wall_s": 80.16683769226074, "note": "parallel worker; cost summed", "t_end": 1790791015.7102742}
+{"stage": "FORMAL", "run_id": "main_10_shared", "wall_s": 88.03768706321716, "note": "parallel worker; cost summed", "t_end": 1790791015.710678}
+{"stage": "FORMAL", "run_id": "main_11_full", "wall_s": 191.5790617465973, "note": "parallel worker; cost summed", "t_end": 1790791019.2832928}
+{"stage": "FORMAL", "run_id": "main_11_no_write", "wall_s": 80.46373438835144, "note": "parallel worker; cost summed", "t_end": 1790791019.2841005}
+{"stage": "FORMAL", "run_id": "main_11_shared", "wall_s": 87.83544063568115, "note": "parallel worker; cost summed", "t_end": 1790791019.2848945}
+{"stage": "LIVE", "run_id": "live_A", "wall_s": 129.53327202796936, "t_end": 1790791135.9535048}
+{"stage": "LIVE", "run_id": "live_B_fork", "wall_s": 130.8919472694397, "t_end": 1790791266.871757}
+{"stage": "FORMAL", "run_id": "main_12_full", "wall_s": 196.0984709262848, "note": "parallel worker; cost summed", "t_end": 1790791354.3675437}
+{"stage": "FORMAL", "run_id": "main_12_no_write", "wall_s": 84.10162138938904, "note": "parallel worker; cost summed", "t_end": 1790791354.3684251}
+{"stage": "FORMAL", "run_id": "main_12_shared", "wall_s": 80.68112659454346, "note": "parallel worker; cost summed", "t_end": 1790791354.3689158}
+{"stage": "FORMAL", "run_id": "main_13_full", "wall_s": 196.75240993499756, "note": "parallel worker; cost summed", "t_end": 1790791354.8976548}
+{"stage": "FORMAL", "run_id": "main_13_no_write", "wall_s": 83.4811475276947, "note": "parallel worker; cost summed", "t_end": 1790791354.898298}
+{"stage": "FORMAL", "run_id": "main_13_shared", "wall_s": 80.27668380737305, "note": "parallel worker; cost summed", "t_end": 1790791354.8987403}
+{"stage": "FORMAL", "run_id": "main_14_full", "wall_s": 197.01668572425842, "note": "parallel worker; cost summed", "t_end": 1790791377.8788412}
+{"stage": "FORMAL", "run_id": "main_14_no_write", "wall_s": 82.65627431869507, "note": "parallel worker; cost summed", "t_end": 1790791377.8796499}
+{"stage": "FORMAL", "run_id": "main_14_shared", "wall_s": 82.31370162963867, "note": "parallel worker; cost summed", "t_end": 1790791377.8801174}
+{"stage": "FORMAL", "run_id": "main_15_full", "wall_s": 196.84675407409668, "note": "parallel worker; cost summed", "t_end": 1790791382.281238}
+{"stage": "FORMAL", "run_id": "main_15_no_write", "wall_s": 82.8187837600708, "note": "parallel worker; cost summed", "t_end": 1790791382.282017}
+{"stage": "FORMAL", "run_id": "main_15_shared", "wall_s": 83.19177436828613, "note": "parallel worker; cost summed", "t_end": 1790791382.2824407}
+{"stage": "FORMAL", "run_id": "main_17_full", "wall_s": 184.838782787323, "note": "parallel worker; cost summed", "t_end": 1790791704.6323154}
+{"stage": "FORMAL", "run_id": "main_17_no_write", "wall_s": 79.73561573028564, "note": "parallel worker; cost summed", "t_end": 1790791704.6330612}
+{"stage": "FORMAL", "run_id": "main_17_shared", "wall_s": 85.0244996547699, "note": "parallel worker; cost summed", "t_end": 1790791704.6335516}
+{"stage": "FORMAL", "run_id": "main_16_full", "wall_s": 184.11248183250427, "note": "parallel worker; cost summed", "t_end": 1790791704.9471931}
+{"stage": "FORMAL", "run_id": "main_16_no_write", "wall_s": 80.96355104446411, "note": "parallel worker; cost summed", "t_end": 1790791704.9479065}
+{"stage": "FORMAL", "run_id": "main_16_shared", "wall_s": 85.37727975845337, "note": "parallel worker; cost summed", "t_end": 1790791704.9483182}
+{"stage": "FORMAL", "run_id": "main_18_full", "wall_s": 185.08660125732422, "note": "parallel worker; cost summed", "t_end": 1790791729.488818}
+{"stage": "FORMAL", "run_id": "main_18_no_write", "wall_s": 80.20759153366089, "note": "parallel worker; cost summed", "t_end": 1790791729.4897442}
+{"stage": "FORMAL", "run_id": "main_18_shared", "wall_s": 86.15353202819824, "note": "parallel worker; cost summed", "t_end": 1790791729.4902713}
+{"stage": "FORMAL", "run_id": "main_19_full", "wall_s": 184.47101640701294, "note": "parallel worker; cost summed", "t_end": 1790791734.1437366}
+{"stage": "FORMAL", "run_id": "main_19_no_write", "wall_s": 80.13033986091614, "note": "parallel worker; cost summed", "t_end": 1790791734.1444478}
+{"stage": "FORMAL", "run_id": "main_19_shared", "wall_s": 87.11915969848633, "note": "parallel worker; cost summed", "t_end": 1790791734.1448734}
+{"stage": "FORMAL", "run_id": "main_21_full", "wall_s": 189.22039818763733, "note": "parallel worker; cost summed", "t_end": 1790792063.9490883}
+{"stage": "FORMAL", "run_id": "main_21_no_write", "wall_s": 82.42566776275635, "note": "parallel worker; cost summed", "t_end": 1790792063.949877}
+{"stage": "FORMAL", "run_id": "main_21_shared", "wall_s": 87.22099828720093, "note": "parallel worker; cost summed", "t_end": 1790792063.9503314}
+{"stage": "FORMAL", "run_id": "main_20_full", "wall_s": 190.55966758728027, "note": "parallel worker; cost summed", "t_end": 1790792064.8387258}
+{"stage": "FORMAL", "run_id": "main_20_no_write", "wall_s": 82.00760197639465, "note": "parallel worker; cost summed", "t_end": 1790792064.8394384}
+{"stage": "FORMAL", "run_id": "main_20_shared", "wall_s": 87.51143860816956, "note": "parallel worker; cost summed", "t_end": 1790792064.8398159}
+{"stage": "FORMAL", "run_id": "main_22_full", "wall_s": 191.48707842826843, "note": "parallel worker; cost summed", "t_end": 1790792086.971679}
+{"stage": "FORMAL", "run_id": "main_22_no_write", "wall_s": 81.88840985298157, "note": "parallel worker; cost summed", "t_end": 1790792086.9725013}
+{"stage": "FORMAL", "run_id": "main_22_shared", "wall_s": 83.99481344223022, "note": "parallel worker; cost summed", "t_end": 1790792086.9729636}
+{"stage": "FORMAL", "run_id": "main_23_full", "wall_s": 191.77427768707275, "note": "parallel worker; cost summed", "t_end": 1790792091.1108987}
+{"stage": "FORMAL", "run_id": "main_23_no_write", "wall_s": 82.24495387077332, "note": "parallel worker; cost summed", "t_end": 1790792091.1116202}
+{"stage": "FORMAL", "run_id": "main_23_shared", "wall_s": 82.8354811668396, "note": "parallel worker; cost summed", "t_end": 1790792091.111978}
+{"stage": "REPRO", "run_id": "repro_stream_00", "wall_s": 308.9550232887268, "note": "determinism rerun, fresh process", "t_end": 1790792991.8459954}

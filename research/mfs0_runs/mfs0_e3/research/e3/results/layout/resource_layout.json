@@ -1,0 +1,113 @@
+{
+ "chosen": "dedicated",
+ "rule": "plan ¡ì8: equal function + input contract first; pooled is dominated",
+ "occupancy_durations_s": {
+  "no_L_K0": 2.846,
+  "K1_no_L": 2.921,
+  "L_observed": 3.128
+ },
+ "dev_material_max_concurrency": {
+  "per_history": [
+   2,
+   2,
+   2
+  ],
+  "global_": 6,
+  "source": "24 E2 formal streams (dev material)"
+ },
+ "conservative_bounds": {
+  "per_history_under_A_contract": 2,
+  "per_history_under_gate_recovery_only": 3,
+  "note": "gate-recovery-only inputs can exceed 2 slots ¡ú CAPACITY_REJECTED (E2 semantics, kept)"
+ },
+ "pooled": {
+  "slots_required_to_keep_E2_input_contract": 6,
+  "slots_observed_dev_max": 6,
+  "per_slot_extra": {
+   "history_id_latches": 2,
+   "condition_latch": 1,
+   "arbitration_comparators": "priority encoder ¡Ý 3",
+   "write_chains": 18,
+   "versus_dedicated_write_chains": 6
+  },
+  "verdict": "no state saving: keeping the E2 input contract needs 6 slots (= dedicated); fewer slots would reject inputs E2 accepts; per-slot identity latches, arbitration and 9-way routing increase every other cost"
+ },
+ "identity_information_lower_bound_bits": {
+  "per_split_slot": 1,
+  "total": 6,
+  "implemented": "1 binary K per split slot"
+ },
+ "dedicated_devices": {
+  "capacitors": {
+   "T": 6,
+   "O": 6,
+   "K": 6,
+   "traces": 4
+  },
+  "long_term_carriers": {
+   "marginal": 3,
+   "conditional": 6
+  },
+  "comparators": {
+   "E2_slot_free_T": 6,
+   "E2_slot_free_O": 6,
+   "E2_window": 6,
+   "K_free": 6,
+   "K_read": 6,
+   "K_read_complement": 6,
+   "trace_thresholds": 1,
+   "operator_inverters": 0,
+   "operator_outputs": 0
+  },
+  "mosfet_switches": {
+   "E2_T_set": 6,
+   "E2_O_set": 6,
+   "E2_O_reset": 6,
+   "E2_write_chains": 48,
+   "E2_read": 3,
+   "trace_set": 4,
+   "K_set": 12,
+   "K_reset": 6,
+   "leaf_write_chains": 120,
+   "leaf_read": 6,
+   "read_mux": 6,
+   "operator_switches": 0
+  },
+  "resistors": {
+   "E2_R_T": 6,
+   "E2_R_o": 6,
+   "E2_sense": 3,
+   "R_x": 4,
+   "R_K": 6,
+   "R_Krst": 6,
+   "leaf_sense": 6,
+   "operator_pulldown": 0
+  },
+  "read_ports_assumed_ideal_gate_fanout": {
+   "T_reads_per_slot": "E2: T-set? no; window, free, settle¡Á2, O-reset, K-reset, leaf settle¡Á4",
+   "O_reads_per_split_slot": "marginal UP/DN + leaf UP/DN ¡Á2 leaves",
+   "K_reads_per_split_slot": "free, read, read-complement"
+  }
+ },
+ "dedicated_totals": {
+  "capacitors": 22,
+  "long_term_carriers": 9,
+  "comparators": 37,
+  "mosfet_switches": 223,
+  "resistors": 37
+ },
+ "state_account": {
+  "capacitor_states": 22,
+  "long_term_carriers": 9,
+  "E2": {
+   "capacitor_states": 12,
+   "long_term_carriers": 3
+  }
+ },
+ "not_counted": [
+  "rails (shared V_D, V_write, V_S, V_read)",
+  "reference dividers for comparator levels",
+  "source/bridge interfaces",
+  "log memory (separate account)"
+ ]
+}

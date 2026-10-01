@@ -1,0 +1,70 @@
+{
+ "opposite_K_concurrent": {
+  "conds": [
+   1,
+   0
+  ],
+  "slots": [
+   0,
+   1
+  ],
+  "route_log": [
+   [
+    0,
+    0,
+    1
+   ],
+   [
+    0,
+    1,
+    0
+   ]
+  ],
+  "dz_leaf1": -0.05003915235956147,
+  "dz_leaf0": 0.04953471071991555,
+  "ref_dev": 0.0005009300104965586,
+  "route_flips": 0,
+  "ok": true
+ },
+ "third_entry_rejected": {
+  "status": [
+   "ADMITTED",
+   "ADMITTED",
+   "CAPACITY_REJECTED"
+  ],
+  "state_identical": true,
+  "ok": true
+ },
+ "K_clear_then_low": {
+  "conds": [
+   1,
+   0
+  ],
+  "slots": [
+   0,
+   0
+  ],
+  "route_log": [
+   [
+    0,
+    0,
+    1
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "admit_K": [
+   2.0,
+   0.0
+  ],
+  "ok": true
+ },
+ "drain_hold_120s": {
+  "max_abs_dw": 0.0,
+  "ok": true
+ },
+ "cost_s": 21.058218240737915
+}

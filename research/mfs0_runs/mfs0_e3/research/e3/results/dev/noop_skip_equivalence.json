@@ -1,0 +1,1 @@
+{"check":"exact no-op skips (stateless read/logic only on W steps; undriven empty T/K/O relax skipped) vs pre-optimisation core","streams":"120 s dev A (C1x3) and X (C6) streams, groups C, R, C0","records_carriers_zlog_leafq_routelog_identical":{"A":true,"X":true},"t_old_s":{"A":53.4,"X":44.9},"t_new_s":{"A":47.9,"X":30.8}}

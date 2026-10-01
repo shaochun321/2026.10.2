@@ -1,0 +1,74 @@
+{
+ "splits": {
+  "0": {
+   "candidate": "C1",
+   "pi_D1": 0.20876149269875607
+  },
+  "1": {
+   "candidate": "C1",
+   "pi_D1": 0.23766094420600858
+  },
+  "2": {
+   "candidate": "C1",
+   "pi_D1": 0.17584179583110637
+  }
+ },
+ "unsplit": [],
+ "selection": {
+  "0": {
+   "candidate": "C1",
+   "D1_mean_d": -0.06605540656443915,
+   "D2_mean_d": -0.06839869522699406,
+   "D2_ci": [
+    -0.07754779648416803,
+    -0.05924959396982009
+   ],
+   "D2_leaf_n": [
+    1490,
+    355
+   ],
+   "D2_streams_both_ge10": 12,
+   "pi_D1": 0.20876149269875607,
+   "gain_ok": true,
+   "support_ok": true,
+   "split": true
+  },
+  "1": {
+   "candidate": "C1",
+   "D1_mean_d": -0.0399532622665315,
+   "D2_mean_d": -0.05287193196723966,
+   "D2_ci": [
+    -0.06052119997205146,
+    -0.04522266396242786
+   ],
+   "D2_leaf_n": [
+    1397,
+    416
+   ],
+   "D2_streams_both_ge10": 12,
+   "pi_D1": 0.23766094420600858,
+   "gain_ok": true,
+   "support_ok": true,
+   "split": true
+  },
+  "2": {
+   "candidate": "C1",
+   "D1_mean_d": -0.08833384199853173,
+   "D2_mean_d": -0.07692880060990992,
+   "D2_ci": [
+    -0.0863670310396632,
+    -0.06749057018015664
+   ],
+   "D2_leaf_n": [
+    1516,
+    307
+   ],
+   "D2_streams_both_ge10": 12,
+   "pi_D1": 0.17584179583110637,
+   "gain_ok": true,
+   "support_ok": true,
+   "split": true
+  }
+ },
+ "note": "offline selector output; frozen before any E3 formal run; formal data never used for selection"
+}

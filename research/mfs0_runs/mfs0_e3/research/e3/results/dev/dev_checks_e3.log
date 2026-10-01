@@ -1,0 +1,176 @@
+{
+ "nosplit_bit_identical_E2": true,
+ "relabel_reverse_max": 0.0,
+ "relabel_reverse_pred_max": 0.0,
+ "dev_stream_ref_dev": 0.002223801459721786,
+ "route_vs_latched_mismatch": 0,
+ "readout_dev": 0.0024873121953672417,
+ "accept_eq_settle": true,
+ "leaf_entries_eq_admissions": true,
+ "route_flips": 0,
+ "consumer_on_off_identical": true,
+ "consumer_hints": 12,
+ "leaf_window": {
+  "first_out_offset": 1040,
+  "cases": {
+   "L_same_tick": {
+    "dz_leaf0": 0.049534665979067416,
+    "dz_marg": 0.049536182548761465
+   },
+   "L_last_in": {
+    "dz_leaf0": 0.04953473187771906,
+    "dz_marg": 0.04953624845122284
+   },
+   "L_first_out": {
+    "dz_leaf0": -0.05003915235956147,
+    "dz_marg": -0.050040700233266455
+   },
+   "no_L": {
+    "dz_leaf0": -0.05003915235956147,
+    "dz_marg": -0.050040700233266455
+   }
+  },
+  "ok": true
+ },
+ "trace_boundary": {
+  "cases": {
+   "1037": {
+    "node": 1,
+    "ref": 1
+   },
+   "1038": {
+    "node": 1,
+    "ref": 1
+   },
+   "1039": {
+    "node": 1,
+    "ref": 1
+   },
+   "1040": {
+    "node": 1,
+    "ref": 0
+   },
+   "1041": {
+    "node": 0,
+    "ref": 0
+   },
+   "1042": {
+    "node": 0,
+    "ref": 0
+   },
+   "1043": {
+    "node": 0,
+    "ref": 0
+   }
+  },
+  "last_on_node": 1040,
+  "last_on_ref": 1039,
+  "offset_ticks": 1,
+  "ok": true
+ },
+ "trace_boundary_2H": {
+  "cases": {
+   "2077": 1,
+   "2078": 1,
+   "2079": 1,
+   "2080": 1,
+   "2081": 0,
+   "2082": 0
+  },
+  "last_on_node": 2080,
+  "last_on_ref": 2079
+ },
+ "occupancy": {
+  "no_L": {
+   "T_below_lo_s": 2.846,
+   "K_clear_after_T_s": 0.0,
+   "O_clear_after_T_s": 0.0,
+   "occupancy_s": 2.846
+  },
+  "L_observed": {
+   "T_below_lo_s": 2.846,
+   "K_clear_after_T_s": 0.0,
+   "O_clear_after_T_s": 0.28200000000000003,
+   "occupancy_s": 3.128
+  }
+ },
+ "flip_suite": {
+  "opposite_K_concurrent": {
+   "conds": [
+    1,
+    0
+   ],
+   "slots": [
+    0,
+    1
+   ],
+   "route_log": [
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "dz_leaf1": -0.05003915235956147,
+   "dz_leaf0": 0.04953471071991555,
+   "ref_dev": 0.0005009300104965586,
+   "route_flips": 0,
+   "ok": true
+  },
+  "third_entry_rejected": {
+   "status": [
+    "ADMITTED",
+    "ADMITTED",
+    "CAPACITY_REJECTED"
+   ],
+   "state_identical": true,
+   "ok": true
+  },
+  "K_clear_then_low": {
+   "conds": [
+    1,
+    0
+   ],
+   "slots": [
+    0,
+    0
+   ],
+   "route_log": [
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "admit_K": [
+    2.0,
+    0.0
+   ],
+   "ok": true
+  },
+  "drain_hold_120s": {
+   "max_abs_dw": 0.0,
+   "ok": true
+  }
+ },
+ "K_hold": {
+  "need_s": 2.845679977328822,
+  "margin_V": 0.8190077885738869
+ },
+ "trace_set_error_rel": -2.428565530565585e-06,
+ "objects": [
+  31,
+  31
+ ],
+ "wall_s": 113.49719047546387
+}

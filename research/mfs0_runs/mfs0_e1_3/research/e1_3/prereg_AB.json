@@ -1,0 +1,44 @@
+{
+ "frozen_at": "2026-10-01, before any E1.3 run",
+ "plan": "cell-cell/交叉比对/MFS0-E1.2独立研判与E1.3序列证据方案_2026-10-01.md §4-§5",
+ "carrier_semantics": "probability memory",
+ "policies": {
+   "fixed_0.5": "m=0.5", "fixed_1": "m=1", "fixed_1.5": "m=1.5",
+   "e12_feedback": "frozen E1.2 candidate: h<-0.8h+0.2delta; m=0.5+min(1,|h|/0.2); no retuning",
+   "cusum": "kappa=0.10, H=0.80, K=6; normal m=0.5, fast m=1.5"
+ },
+ "cusum_order": [
+   "1. m_n = 1.5 if fast_balance > 0 else 0.5; save p_hat_n = z_n",
+   "2. observe Y_n; z <- z + (1-0.9^m_n)(Y_n - z)",
+   "3. if this experience was fast: fast_balance -= 1; S+ = S- = 0",
+   "4. else: delta = o_n - p_hat_n; S+ = max(0, S+ + delta - kappa); S- = max(0, S- - delta - kappa); if S+ >= H or S- >= H: fast_balance = 6 (from next experience), S+ = S- = 0"
+ ],
+ "initial": "z0=0.5, S+=S-=0, fast_balance=0, h0=0",
+ "reference_readout": "o_n = Y_n (ideal); node implementation must take o from the observation circuit",
+ "A": {
+   "streams": 64, "seed_outcomes": "random.Random(20270301+s)", "seed_event_times": "random.Random(20770301+s)",
+   "seed_check": "20270301/20270401/20270501/20770301 not present in v4/E1.1/E1.2 code or data",
+   "tasks": {"stable": {"p": [0.2, 0.5, 0.8], "n": 360, "eval": "last 240"},
+             "reversal": {"p": [0.8, 0.2, 0.8], "n_per_segment": 120, "eval": "30 after each switch"}},
+   "draw_order": "stable 0.2, 0.5, 0.8, then reversal; same outcome sequences for all five policies",
+   "t_crit_df63_0975": 1.998341,
+   "criteria_for_cusum": {
+     "A1": "each stable p: |mean - p| <= 0.03 and t half <= 0.03",
+     "A2": "each stable p: MSE(cusum) - MSE(fixed_1) <= 0.005",
+     "A3": "reversal MSE(cusum) <= 0.9 MSE(fixed_1) and paired t upper < 0",
+     "A4": "not dominated by any fixed m on (stable_loss, reversal_loss)"
+   },
+   "report": ["per-p trigger count", "fast-mode fraction", "first trigger time per stream", "first trigger delay after each switch", "per-p pooled Cov(alpha,Y), Cov(alpha,z) and finite-window identity check"],
+   "alt_fixed_for_C": "argmin over {0.5,1.5} of 0.5*stable_loss+0.5*reversal_loss (recorded now)",
+   "verdict": "A1-A4 all -> go to B; else POLICY_NOT_JUSTIFIED and the round ends"
+ },
+ "B_conditional": {
+   "run_only_if": "A passes",
+   "streams": 32, "seed_outcomes": "random.Random(20270401+s)", "seed_event_times": "random.Random(20770401+s)",
+   "task": {"p": [0.65, 0.35, 0.65], "n_per_segment": 120, "eval": "30 after each switch"},
+   "t_crit_df31_0975": 2.039513,
+   "criterion": "mean reversal-window MSE(cusum) - MSE(fixed_1) <= 0.005; paired t interval reported; else TRANSFER_FAIL",
+   "report_separately": "no clear gain vs clear degradation"
+ },
+ "exit_rule": "if cusum also fails: pause the auto-speed branch, keep fixed m=1 baseline memory; next stage = observation/settlement separation and holding under irregular timing"
+}

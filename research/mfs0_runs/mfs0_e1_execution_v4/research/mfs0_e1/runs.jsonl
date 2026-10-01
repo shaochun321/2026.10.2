@@ -1,0 +1,51 @@
+{"stage": "A", "run_id": "a_probe_transduction", "wall_s": 1.4414947032928467, "source_commit": "4d4e424decefb1ee5698f7dbca4e62594b41d8e4", "note": "template latency / dt probe", "t_end": 1790759441.1268103}
+{"stage": "B", "run_id": "b_smoke", "wall_s": 1.4895095825195312, "note": "two single-history 3-cycle smokes", "t_end": 1790760047.1957278}
+{"stage": "C", "run_id": "c_mapping", "wall_s": 26.98534321784973, "note": "identification/dt/sequences/prefix/interventions/read/selectivity", "t_end": 1790760258.7966294}
+{"stage": "D", "run_id": "D_stream_0", "wall_s": 38.37519812583923, "note": "formal", "t_end": 1790760455.2443533}
+{"stage": "D", "run_id": "D_stream_1", "wall_s": 38.80465078353882, "note": "formal", "t_end": 1790760494.0502248}
+{"stage": "D", "run_id": "D_stream_2", "wall_s": 38.407662868499756, "note": "formal", "t_end": 1790760532.4585128}
+{"stage": "D", "run_id": "D_stream_3", "wall_s": 38.59165096282959, "note": "formal", "t_end": 1790760571.0508}
+{"stage": "D", "run_id": "D_stream_4", "wall_s": 38.61369347572327, "note": "formal", "t_end": 1790760609.6651149}
+{"stage": "D", "run_id": "D_stream_5", "wall_s": 38.80441451072693, "note": "formal", "t_end": 1790760648.4701087}
+{"stage": "D", "run_id": "D_stream_6", "wall_s": 38.71745204925537, "note": "formal", "t_end": 1790760687.1881115}
+{"stage": "D", "run_id": "D_stream_7", "wall_s": 38.80896735191345, "note": "formal", "t_end": 1790760725.9976754}
+{"stage": "D", "run_id": "D_stream_8", "wall_s": 38.67727446556091, "note": "formal", "t_end": 1790760764.6755722}
+{"stage": "D", "run_id": "D_stream_9", "wall_s": 38.60176992416382, "note": "formal", "t_end": 1790760803.2779653}
+{"stage": "D", "run_id": "D_stream_10", "wall_s": 38.71468758583069, "note": "formal", "t_end": 1790760841.9932606}
+{"stage": "D", "run_id": "D_stream_11", "wall_s": 38.78046441078186, "note": "formal", "t_end": 1790760880.7743256}
+{"stage": "D", "run_id": "D_stream_12", "wall_s": 38.58602547645569, "note": "formal", "t_end": 1790760919.361173}
+{"stage": "D", "run_id": "D_stream_13", "wall_s": 38.97926926612854, "note": "formal", "t_end": 1790760958.3410678}
+{"stage": "D", "run_id": "D_stream_14", "wall_s": 38.70131468772888, "note": "formal", "t_end": 1790760997.043008}
+{"stage": "D", "run_id": "D_stream_15", "wall_s": 38.76998281478882, "note": "formal", "t_end": 1790761035.8135896}
+{"stage": "D", "run_id": "D_stream_16", "wall_s": 38.61981415748596, "note": "formal", "t_end": 1790761074.434045}
+{"stage": "D", "run_id": "D_stream_17", "wall_s": 38.847214460372925, "note": "formal", "t_end": 1790761113.2818737}
+{"stage": "D", "run_id": "D_stream_18", "wall_s": 38.61987233161926, "note": "formal", "t_end": 1790761151.902369}
+{"stage": "D", "run_id": "D_stream_19", "wall_s": 38.68341898918152, "note": "formal", "t_end": 1790761190.5863616}
+{"stage": "D", "run_id": "D_stream_20", "wall_s": 39.121758699417114, "note": "formal", "t_end": 1790761229.7087085}
+{"stage": "D", "run_id": "D_stream_21", "wall_s": 38.585756063461304, "note": "formal", "t_end": 1790761268.295097}
+{"stage": "D", "run_id": "D_stream_22", "wall_s": 38.89189791679382, "note": "formal", "t_end": 1790761307.1876192}
+{"stage": "D", "run_id": "D_stream_23", "wall_s": 38.682525873184204, "note": "formal", "t_end": 1790761345.8707664}
+{"stage": "D", "run_id": "D_no_write_0", "wall_s": 37.402607440948486, "note": "formal baseline", "t_end": 1790761383.2739809}
+{"stage": "D", "run_id": "D_no_write_1", "wall_s": 37.19685387611389, "note": "formal baseline", "t_end": 1790761420.471417}
+{"stage": "D", "run_id": "D_no_write_2", "wall_s": 37.21138668060303, "note": "formal baseline", "t_end": 1790761457.683371}
+{"stage": "D", "run_id": "D_no_write_3", "wall_s": 37.25049376487732, "note": "formal baseline", "t_end": 1790761494.934461}
+{"stage": "D", "run_id": "D_one_direction_0", "wall_s": 37.97016406059265, "note": "formal baseline", "t_end": 1790761532.9052165}
+{"stage": "D", "run_id": "D_one_direction_1", "wall_s": 38.035085678100586, "note": "formal baseline", "t_end": 1790761570.9409487}
+{"stage": "D", "run_id": "D_one_direction_2", "wall_s": 38.22777986526489, "note": "formal baseline", "t_end": 1790761609.169307}
+{"stage": "D", "run_id": "D_one_direction_3", "wall_s": 38.04942798614502, "note": "formal baseline", "t_end": 1790761647.21943}
+{"stage": "E", "run_id": "E_stream_0", "wall_s": 115.94856095314026, "note": "formal", "t_end": 1790762078.204178}
+{"stage": "E", "run_id": "E_stream_1", "wall_s": 116.81240844726562, "note": "formal", "t_end": 1790762195.0173655}
+{"stage": "E", "run_id": "E_stream_2", "wall_s": 115.90304946899414, "note": "formal", "t_end": 1790762310.9210596}
+{"stage": "E", "run_id": "E_stream_3", "wall_s": 116.13919353485107, "note": "formal", "t_end": 1790762427.0608628}
+{"stage": "E", "run_id": "E_stream_4", "wall_s": 116.85374641418457, "note": "formal", "t_end": 1790762543.9152966}
+{"stage": "E", "run_id": "E_stream_5", "wall_s": 116.1951687335968, "note": "formal", "t_end": 1790762660.1111116}
+{"stage": "E", "run_id": "E_stream_6", "wall_s": 116.1837592124939, "note": "formal", "t_end": 1790762776.2955189}
+{"stage": "E", "run_id": "E_stream_7", "wall_s": 116.48005270957947, "note": "formal", "t_end": 1790762892.7761805}
+{"stage": "E", "run_id": "E_stream_8", "wall_s": 116.65580010414124, "note": "formal", "t_end": 1790763009.4326096}
+{"stage": "E", "run_id": "E_stream_9", "wall_s": 116.58128690719604, "note": "formal", "t_end": 1790763126.0146384}
+{"stage": "E", "run_id": "E_stream_10", "wall_s": 115.78885412216187, "note": "formal", "t_end": 1790763241.8041065}
+{"stage": "E", "run_id": "E_stream_11", "wall_s": 116.0010769367218, "note": "formal", "t_end": 1790763357.8057876}
+{"stage": "E", "run_id": "E_shared_0", "wall_s": 77.72128534317017, "note": "formal baseline", "t_end": 1790763435.5276992}
+{"stage": "E", "run_id": "E_shared_1", "wall_s": 78.04154348373413, "note": "formal baseline", "t_end": 1790763513.5698469}
+{"stage": "E", "run_id": "E_shared_2", "wall_s": 77.05240035057068, "note": "formal baseline", "t_end": 1790763590.6228504}
+{"stage": "E", "run_id": "E_shared_3", "wall_s": 77.33820939064026, "note": "formal baseline", "t_end": 1790763667.9616988}

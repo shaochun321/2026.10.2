@@ -1,0 +1,157 @@
+{
+ "window": {
+  "H_nominal": 1.0397207708399179,
+  "first_out_tick_offset": 1040,
+  "cases": {
+   "L_same_tick": {
+    "dz": 0.049536182548761465,
+    "q_ref": 1
+   },
+   "L_inside": {
+    "dz": 0.04953621465450331,
+    "q_ref": 1
+   },
+   "L_last_in": {
+    "dz": 0.04953624845122284,
+    "q_ref": 1
+   },
+   "L_first_out": {
+    "dz": -0.050040700233266455,
+    "q_ref": 0
+   },
+   "L_far_out": {
+    "dz": -0.050040700233266455,
+    "q_ref": 0
+   },
+   "no_L": {
+    "dz": -0.050040700233266455,
+    "q_ref": 0
+   }
+  },
+  "ok": true
+ },
+ "cross_overlap_both_up": [
+  0.04953622729219598,
+  0.049536208292144224,
+  0.0
+ ],
+ "same_hist_concurrent": {
+  "node": 0.5022711316734232,
+  "reference": 0.5027715813203666,
+  "diff": -0.0005004496469434017,
+  "seq_up_then_down": 0.49500000000000005,
+  "seq_down_then_up": 0.505,
+  "slots_used": [
+   1,
+   1
+  ],
+  "settle_entries": [
+   1,
+   1
+  ]
+ },
+ "capacity": {
+  "statuses": [
+   "ADMITTED",
+   "ADMITTED",
+   "CAPACITY_REJECTED"
+  ],
+  "slots": [
+   0,
+   1,
+   -1
+  ],
+  "n_accept": [
+   1,
+   1
+  ],
+  "n_settle": [
+   1,
+   1
+  ]
+ },
+ "silence_hold": {
+  "max_dz_after_drain": 0.0
+ },
+ "stream_end_in_window": {
+  "dz": 0.0,
+  "note": "window [0.1, 1.14) s still open at stop: no write, Y censored"
+ },
+ "stream_end_in_settle": {
+  "dz": -0.0103612441302674,
+  "note": "window closed: non-occurrence established; partial settle write is legal"
+ },
+ "plan_6_2_example": {
+  "node": 0.4184095023129344,
+  "reference": 0.4190055408048743,
+  "ideal_simultaneous": 0.419,
+  "seq_up_down": 0.414,
+  "seq_down_up": 0.424,
+  "q": [
+   0,
+   1
+  ]
+ },
+ "relabel_invariance_max": 0.0,
+ "equivalence_e11": {
+  "max_diff": 4.014566457044566e-13,
+  "e11": [
+   0.5495362019004572,
+   0.4945990857431598,
+   0.5446718234617174,
+   0.5897726534172969,
+   0.5308684250228125,
+   0.47777495337542575,
+   0.5295193201390969,
+   0.4765591617234797
+  ],
+  "e2": [
+   0.5495362019005561,
+   0.4945990857432492,
+   0.5446718234620513,
+   0.5897726534176682,
+   0.5308684250231469,
+   0.4777749533757263,
+   0.5295193201394983,
+   0.4765591617238427
+  ]
+ },
+ "replay60": {
+  "us_per_step": 165.21096229553223,
+  "consumer_on_off_identical": true,
+  "hints": 1,
+  "max_dev_vs_reference": 0.0018583309724937713,
+  "max_readout_vs_z": 0.0024873121953672417,
+  "n_records": 32,
+  "rejected": 0,
+  "n_accept": [
+   [
+    9,
+    2
+   ],
+   [
+    8,
+    0
+   ],
+   [
+    12,
+    1
+   ]
+  ],
+  "n_settle": [
+   [
+    9,
+    2
+   ],
+   [
+    8,
+    0
+   ],
+   [
+    12,
+    1
+   ]
+  ]
+ },
+ "wall_s": 52.73553442955017
+}

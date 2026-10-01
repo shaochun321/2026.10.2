@@ -1,0 +1,107 @@
+stream 0 wall 38.4s  -> projected 15.4 min
+{
+ "A1_max_dev_vs_ref": 0.003604710247684051,
+ "A2": [
+  {
+   "phase": 1,
+   "p": 0.8,
+   "mean_pred": 0.7953270946701374,
+   "ci_half": 0.020629962177295607,
+   "ok": true,
+   "precise": true
+  },
+  {
+   "phase": 2,
+   "p": 0.2,
+   "mean_pred": 0.22697595123429232,
+   "ci_half": 0.024009669189037117,
+   "ok": true,
+   "precise": true
+  },
+  {
+   "phase": 3,
+   "p": 0.8,
+   "mean_pred": 0.7946692686692969,
+   "ci_half": 0.018514100149901125,
+   "ok": true,
+   "precise": true
+  }
+ ],
+ "A4": [
+  {
+   "phase": 1,
+   "brier_device": 0.1806969569767616,
+   "brier_ci_half": 0.015467113751364637,
+   "brier_no_write": 0.2486937139180197,
+   "brier_one_dir": 0.22701889922506424,
+   "brier_fixed05": 0.25,
+   "brier_oracle": 0.15999999999999998,
+   "emp_rate": 0.7847222222222222
+  },
+  {
+   "phase": 2,
+   "brier_device": 0.18432353755248387,
+   "brier_ci_half": 0.015930055783618394,
+   "brier_no_write": 0.2513594062218748,
+   "brier_one_dir": 0.7724260547357122,
+   "brier_fixed05": 0.25,
+   "brier_oracle": 0.16000000000000003,
+   "emp_rate": 0.2222222222222222
+  },
+  {
+   "phase": 3,
+   "brier_device": 0.1607277709439323,
+   "brier_ci_half": 0.016466780978407754,
+   "brier_no_write": 0.24820158610807722,
+   "brier_one_dir": 0.13329603714027285,
+   "brier_fixed05": 0.25,
+   "brier_oracle": 0.15999999999999998,
+   "emp_rate": 0.8152777777777778
+  }
+ ],
+ "A3": [
+  {
+   "reversal": 1,
+   "median": 8.0,
+   "q25": 7,
+   "q75": 10,
+   "never": 0
+  },
+  {
+   "reversal": 2,
+   "median": 8.0,
+   "q25": 6,
+   "q75": 11,
+   "never": 0
+  }
+ ],
+ "A5": {
+  "w_entries_all_1": true,
+  "l_entries_eq_y": true,
+  "O_end_max": 5.2169431484908204e-39,
+  "energy_W_mean": 1353.9028693934365,
+  "energy_D_mean": 4.945214427656379e-06,
+  "ok": true
+ },
+ "interventions": {
+  "no_write_max_dz": 0.0,
+  "one_direction_monotone": true,
+  "one_direction_final_z": [
+   0.9999902812103947,
+   0.999992892912548,
+   0.999990281210671,
+   0.999996575919539
+  ]
+ },
+ "verdict": {
+  "A1": true,
+  "A2": true,
+  "A2_precise": true,
+  "A3": true,
+  "A4": true,
+  "A5": true,
+  "adaptation": "PASS"
+ },
+ "wall_s": 1230.3861284255981,
+ "budget_used_s": 1260.2468841075897
+}

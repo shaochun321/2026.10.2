@@ -1,0 +1,48 @@
+{
+ "frozen_at": "2026-09-30, before any E1.1 run (B or C)",
+ "plan": "cell-cell/交叉比对/MFS0-E1_v4独立研判与下一轮方案_2026-09-30.md §四",
+ "budget_new_sim_wall_s": 5400,
+ "B": {
+   "object": "v4 device unchanged (device.py 32da25e2ed9e910b, sim.py 7efc781f89c73c15, e1_common.py 3b6e3370d5c28748); new entry b_confirm.py only",
+   "phases": [{"p_W1": 0.8, "p_W2": 0.2}, {"p_W1": 0.2, "p_W2": 0.8}, {"p_W1": 0.8, "p_W2": 0.2}],
+   "n_per_history_per_phase": 60, "eval_window": 30, "period_s": 4.0,
+   "streams": 32, "seed_base": 20261130,
+   "seed_check": "v4 used 20260930+s (D, s<24) and 20261030+s (E, s<12); 20261130..20261161 unused",
+   "old_12_streams": "planning only, not pooled",
+   "t_crit_df31_0975": 2.039513,
+   "t_crit_source": "Student t, df=31, two-sided 95% (standard table value)",
+   "unit_of_analysis": "per-stream window mean of actual prediction",
+   "criteria": {
+     "B1": "max |Δz| of the non-presented carrier <= 1e-6",
+     "B2": "each of 6 cells: |mean - p| <= 0.05 AND t half-width <= 0.03",
+     "B3": "each exchange x history: median experiences to first cross 0.5 <= 15",
+     "report": "full state range and count outside the v4 mapping grid [0.02,0.98]; no trimming"
+   },
+   "verdict_rule": "ERROR if execution anomaly; FAIL if B1 or B2-mean or B3 fails; INCONCLUSIVE if only B2-precision fails; else PASS",
+   "no_optional_stopping": true,
+   "note": "per-cell intervals; no joint 95% coverage claimed"
+ },
+ "C": {
+   "object": "new device copy device_mod.py (split sense rail V_S fixed, write rail V_write = m*V_write0 as the only control entry); gm_z fixed once from the m=1 baseline",
+   "checks": {
+     "C1_equivalence": "m=1: per-cycle z and pred equal to v4 device on the same 8-cycle sequence within 1e-10",
+     "C2_readout": "same state, writes off: pred independent of m within 1e-10",
+     "C3_zero": "m=0: |Δz| <= 1e-10 over settle; write charge scales with m (reported)",
+     "C3b_trap": "reported only: setting v4 rail_W.vdd has no effect (demonstrates why it is not a control)"
+   },
+   "mapping": {"m": [0.5, 1.0, 1.5], "z0": [0.02, 0.1, 0.3, 0.5, 0.7, 0.9, 0.98],
+               "events": ["y0 dL=0.45", "y1 earliest dL=0.10", "y1 latest dL=0.80"],
+               "edge_z": [0.0, 0.01, 0.99, 1.0], "fit_points": [0.1, 0.9]},
+   "criteria": {
+     "C4_direction": "UP increases z, DOWN decreases z at every grid point; two-history cross write 0 at m=0.5 and 1.5; edge z=0 stays 0 under DOWN and z=1 stays 1 under UP within 1e-12",
+     "C5_q": "|q_up - 1| <= 0.005 and |q_dn - 0| <= 0.005",
+     "C6_resid": "max affine residual on non-fit points <= 0.001",
+     "C7_alpha_m": "|alpha(m)/(1-0.9^m) - 1| <= 0.03 for each branch, and alpha increasing in m",
+     "C8_symmetry": "|alpha_up - alpha_dn| / mean <= 0.02 for each m",
+     "C9_fixed_point": "for p in {0.2,0.8}: |z* - p| <= 0.01, z* = (p a+ q+ + (1-p) a- q-)/(p a+ + (1-p) a-)",
+     "C10_switching": "60-cycle continuous sequence, m schedule fixed in advance (0.5,1,1.5 each for 5 cycles, repeating), y ~ Random(20261230) with p=0.8 for cycles 0-29 and 0.2 for 30-59; max |z_dev - z_ideal| <= 0.05, z_ideal(n+1) = z + (1-0.9^m_n)(y_n - z), z0=0.5; entries and O clearing as in v4"
+   },
+   "revision_rule": "at most one revision with an explicit circuit reason; first failure kept",
+   "verdict": "INTERFACE_PASS if C1-C10 pass; INTERFACE_USABLE_RATE_APPROX_FAIL if only C7 fails with pure gain scaling; else INTERFACE_FAIL"
+ }
+}

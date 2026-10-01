@@ -1,0 +1,21 @@
+{
+ "freeze": {
+  "current_input_bridge.py": true,
+  "dev_checks.py": true,
+  "e1_common.py": true,
+  "evaluate_system.py": true,
+  "example_interface.py": true,
+  "memory_core.py": true,
+  "prediction_port.py": true,
+  "prereg_E2.json": true,
+  "reference_solver.py": true,
+  "run_e2.py": true,
+  "scenario_builder.py": true,
+  "stream_runner.py": true
+ },
+ "freeze_all_ok": true,
+ "prefix_ticks": 120000,
+ "n_rows": 76,
+ "rows_bit_identical": true,
+ "l_ticks_identical": true
+}

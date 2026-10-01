@@ -1,0 +1,69 @@
+{"stage": "DEV", "run_id": "e2_restore_check", "wall_s": 18.11386775970459, "note": "E2 baseline restore verification", "t_end": 1790868624.9930577}
+{"stage": "SELECT", "run_id": "structure_select", "wall_s": 0.9278476238250732, "note": "offline selector on E2 formal streams (dev material)", "t_end": 1790868704.7501142}
+{"stage": "DEV", "run_id": "dev_checks_e3", "wall_s": 117.28056621551514, "note": "mechanism checks, dev seeds + core injection", "t_end": 1790869744.2408347}
+{"stage": "FORMAL", "run_id": "A_00", "wall_s": 30.73498821258545, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790870482.1269994}
+{"stage": "FORMAL", "run_id": "A_01", "wall_s": 30.831932067871094, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790870482.228935}
+{"stage": "FORMAL", "run_id": "X_00", "wall_s": 24.59651231765747, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790870507.957151}
+{"stage": "FORMAL", "run_id": "X_01", "wall_s": 24.87613797187805, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790870508.2564554}
+{"stage": "FORMAL", "run_id": "L_00", "wall_s": 158.12224197387695, "note": "live bridge; B/C/R lockstep; s=0 incl. fork", "t_end": 1790870667.4367278}
+{"stage": "FORMAL", "run_id": "S_0", "wall_s": 15.527266502380371, "note": "stress, C only", "t_end": 1790870683.904796}
+{"stage": "FORMAL", "run_id": "S_flip_suite", "wall_s": 21.058218240737915, "note": "deterministic core-injection flips", "t_end": 1790870705.0246725}
+{"stage": "REPRO", "run_id": "repro_A_00", "wall_s": 27.77750039100647, "note": "fresh process re-run", "t_end": 1790870732.974002}
+{"stage": "REPRO", "run_id": "repro_X_00", "wall_s": 24.67571759223938, "note": "fresh process re-run", "t_end": 1790870757.650524}
+{"stage": "DEV", "run_id": "devpipe2_A0_260s", "wall_s": 110.38537502288818, "note": "figure test, dev seeds", "t_end": 1790870927.0703175}
+{"stage": "DEV", "run_id": "dev_smoke_bitid_timing", "wall_s": 52.0, "note": "retro-logged: not ledgered at run time; wall from printed timing or upper estimate", "t_end": 1790871052.427153}
+{"stage": "DEV", "run_id": "dev_X_input_check_240s", "wall_s": 90.0, "note": "retro-logged: not ledgered at run time; wall from printed timing or upper estimate", "t_end": 1790871052.427183}
+{"stage": "DEV", "run_id": "dev_L_120s_checkpoint", "wall_s": 160.0, "note": "retro-logged: not ledgered at run time; wall from printed timing or upper estimate", "t_end": 1790871052.4272003}
+{"stage": "DEV", "run_id": "dev_live_probe_site21_20s", "wall_s": 16.5, "note": "retro-logged: not ledgered at run time; wall from printed timing or upper estimate", "t_end": 1790871052.4272106}
+{"stage": "DEV", "run_id": "dev_occupancy_K_probe_x2", "wall_s": 30.0, "note": "retro-logged: not ledgered at run time; wall from printed timing or upper estimate", "t_end": 1790871052.42722}
+{"stage": "DEV", "run_id": "layout_occupancy", "wall_s": 10.0, "note": "retro-logged: not ledgered at run time; wall from printed timing or upper estimate", "t_end": 1790871052.4272282}
+{"stage": "DEV", "run_id": "core_noop_skip_equivalence", "wall_s": 197.04776191711426, "note": "old vs optimised core, 120 s A + X dev streams", "t_end": 1790871363.7373054}
+{"stage": "DEV", "run_id": "dev_checks_e3", "wall_s": 113.49719047546387, "note": "mechanism checks, dev seeds + core injection", "t_end": 1790871500.1116498}
+{"stage": "DEV", "run_id": "example_interface_e3", "wall_s": 1.2444485, "note": "minimal call example", "t_end": 1790871641.509757}
+{"stage": "FORMAL", "run_id": "A_01", "wall_s": 511.0963604450226, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790872057.4336076}
+{"stage": "FORMAL", "run_id": "A_02", "wall_s": 511.3283586502075, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790872057.6852317}
+{"stage": "FORMAL", "run_id": "A_00", "wall_s": 519.7897789478302, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790872066.3292048}
+{"stage": "FORMAL", "run_id": "A_04", "wall_s": 530.5101253986359, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790872588.4784677}
+{"stage": "FORMAL", "run_id": "A_03", "wall_s": 533.0876336097717, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790872591.0539942}
+{"stage": "FORMAL", "run_id": "A_05", "wall_s": 533.0926523208618, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790872599.5465298}
+{"stage": "FORMAL", "run_id": "A_06", "wall_s": 536.7631998062134, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790873125.3728669}
+{"stage": "FORMAL", "run_id": "A_07", "wall_s": 534.4144852161407, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790873125.6116118}
+{"stage": "FORMAL", "run_id": "A_08", "wall_s": 541.6778881549835, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790873141.3569849}
+{"stage": "FORMAL", "run_id": "A_10", "wall_s": 458.7327404022217, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790873584.457327}
+{"stage": "FORMAL", "run_id": "A_09", "wall_s": 466.22682309150696, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790873591.701504}
+{"stage": "FORMAL", "run_id": "A_11", "wall_s": 459.53000140190125, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790873600.9951613}
+{"stage": "FORMAL", "run_id": "A_12", "wall_s": 452.3316299915314, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790874036.9113233}
+{"stage": "FORMAL", "run_id": "A_13", "wall_s": 452.2582287788391, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790874044.0629375}
+{"stage": "FORMAL", "run_id": "A_14", "wall_s": 451.61000084877014, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790874052.7201016}
+{"stage": "FORMAL", "run_id": "A_15", "wall_s": 481.24258518218994, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790874518.256448}
+{"stage": "FORMAL", "run_id": "A_16", "wall_s": 480.929486989975, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790874525.120767}
+{"stage": "FORMAL", "run_id": "A_17", "wall_s": 485.32520937919617, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790874538.1530023}
+{"stage": "FORMAL", "run_id": "A_18", "wall_s": 484.4721803665161, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790875002.851032}
+{"stage": "FORMAL", "run_id": "A_19", "wall_s": 492.7181987762451, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790875017.9337776}
+{"stage": "FORMAL", "run_id": "A_20", "wall_s": 489.30158019065857, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790875027.5532618}
+{"stage": "FORMAL", "run_id": "A_21", "wall_s": 448.0930051803589, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790875451.0548844}
+{"stage": "FORMAL", "run_id": "A_22", "wall_s": 452.36509442329407, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790875470.414925}
+{"stage": "FORMAL", "run_id": "A_23", "wall_s": 458.9992687702179, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790875486.6554875}
+{"stage": "FORMAL", "run_id": "X_01", "wall_s": 360.70259284973145, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790875849.5409052}
+{"stage": "FORMAL", "run_id": "X_02", "wall_s": 363.0887351036072, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790875851.9295523}
+{"stage": "FORMAL", "run_id": "X_00", "wall_s": 370.1965651512146, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790875859.1406097}
+{"stage": "FORMAL", "run_id": "X_03", "wall_s": 344.4740376472473, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790876194.0828323}
+{"stage": "FORMAL", "run_id": "X_04", "wall_s": 347.78547048568726, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790876199.7924325}
+{"stage": "FORMAL", "run_id": "X_05", "wall_s": 354.2716906070709, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790876213.4925444}
+{"stage": "FORMAL", "run_id": "X_06", "wall_s": 338.85921812057495, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790876533.0097966}
+{"stage": "FORMAL", "run_id": "X_07", "wall_s": 339.98810386657715, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790876539.8486977}
+{"stage": "FORMAL", "run_id": "X_08", "wall_s": 346.78724098205566, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790876560.3566937}
+{"stage": "FORMAL", "run_id": "X_09", "wall_s": 345.94455099105835, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790876879.0314372}
+{"stage": "FORMAL", "run_id": "X_10", "wall_s": 344.66516184806824, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790876884.5801215}
+{"stage": "FORMAL", "run_id": "X_11", "wall_s": 349.13249611854553, "note": "parallel worker; B/C/R lockstep; cost summed", "t_end": 1790876909.5456886}
+{"stage": "FORMAL", "run_id": "L_01", "wall_s": 1390.1607973575592, "note": "live bridge; B/C/R lockstep; s=0 incl. fork", "t_end": 1790878301.2781963}
+{"stage": "FORMAL", "run_id": "L_02", "wall_s": 1401.9855082035065, "note": "live bridge; B/C/R lockstep; s=0 incl. fork", "t_end": 1790878313.0951676}
+{"stage": "FORMAL", "run_id": "L_00", "wall_s": 2341.732572555542, "note": "live bridge; B/C/R lockstep; s=0 incl. fork", "t_end": 1790879253.0564587}
+{"stage": "FORMAL", "run_id": "L_03", "wall_s": 1313.033258676529, "note": "live bridge; B/C/R lockstep; s=0 incl. fork", "t_end": 1790879614.5326126}
+{"stage": "FORMAL", "run_id": "L_04", "wall_s": 1322.730230808258, "note": "live bridge; B/C/R lockstep; s=0 incl. fork", "t_end": 1790879636.0232966}
+{"stage": "FORMAL", "run_id": "L_05", "wall_s": 1000.4132452011108, "note": "live bridge; B/C/R lockstep; s=0 incl. fork", "t_end": 1790880253.6423366}
+{"stage": "FORMAL", "run_id": "S_1", "wall_s": 785.2956025600433, "note": "stress, C only", "t_end": 1790881040.0909956}
+{"stage": "FORMAL", "run_id": "S_0", "wall_s": 787.5120024681091, "note": "stress, C only", "t_end": 1790881042.2978177}
+{"stage": "FORMAL", "run_id": "S_flip_suite", "wall_s": 10.78989863395691, "note": "deterministic core-injection flips", "t_end": 1790881053.1466768}
+{"stage": "REPRO", "run_id": "repro_A_00", "wall_s": 354.6901969909668, "note": "fresh process re-run", "t_end": 1790881408.087331}
+{"stage": "REPRO", "run_id": "repro_X_00", "wall_s": 253.46059775352478, "note": "fresh process re-run", "t_end": 1790881661.5490963}

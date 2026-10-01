@@ -1,0 +1,16 @@
+{
+ "B": {
+  "device.py": "32da25e2ed9e910b",
+  "sim.py": "7efc781f89c73c15",
+  "e1_common.py": "3b6e3370d5c28748",
+  "b_confirm.py": "adc8272761733cdb",
+  "preregistration_E1_1.json": "70487f6d332fe2d5"
+ },
+ "C": {
+  "device_mod.py": "4af2d18295f8f47c",
+  "sim.py": "7efc781f89c73c15",
+  "e1_common.py": "3b6e3370d5c28748",
+  "c_interface.py": "dcbf9eccf4a5a750",
+  "preregistration_E1_1.json": "70487f6d332fe2d5"
+ }
+}

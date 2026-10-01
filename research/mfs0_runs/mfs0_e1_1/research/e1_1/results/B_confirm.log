@@ -1,0 +1,103 @@
+stream 0 wall 136.4s -> projected 72.8 min
+{
+ "errors": [],
+ "n_streams": 32,
+ "B1_max_cross_write": 0.0,
+ "state_range": [
+  0.015076116054490996,
+  0.9748028526475154
+ ],
+ "n_outside_mapping_grid_0.02_0.98": 5,
+ "n_state_values": 23040,
+ "B2": [
+  {
+   "phase": 1,
+   "hist": 1,
+   "p": 0.8,
+   "mean": 0.7860544588836419,
+   "t_half": 0.022544036836858704,
+   "mean_ok": true,
+   "precise": true
+  },
+  {
+   "phase": 1,
+   "hist": 2,
+   "p": 0.2,
+   "mean": 0.21527591799376,
+   "t_half": 0.020212418249715085,
+   "mean_ok": true,
+   "precise": true
+  },
+  {
+   "phase": 2,
+   "hist": 1,
+   "p": 0.2,
+   "mean": 0.20931354719611778,
+   "t_half": 0.023409114249933353,
+   "mean_ok": true,
+   "precise": true
+  },
+  {
+   "phase": 2,
+   "hist": 2,
+   "p": 0.8,
+   "mean": 0.7861268157145348,
+   "t_half": 0.021469268947665016,
+   "mean_ok": true,
+   "precise": true
+  },
+  {
+   "phase": 3,
+   "hist": 1,
+   "p": 0.8,
+   "mean": 0.7820486410224152,
+   "t_half": 0.0264899393891865,
+   "mean_ok": true,
+   "precise": true
+  },
+  {
+   "phase": 3,
+   "hist": 2,
+   "p": 0.2,
+   "mean": 0.22095013618889497,
+   "t_half": 0.024348508207344976,
+   "mean_ok": true,
+   "precise": true
+  }
+ ],
+ "B3": [
+  {
+   "exchange": 1,
+   "hist": 1,
+   "median": 7.5,
+   "never": 0
+  },
+  {
+   "exchange": 1,
+   "hist": 2,
+   "median": 9.0,
+   "never": 0
+  },
+  {
+   "exchange": 2,
+   "hist": 1,
+   "median": 7.5,
+   "never": 0
+  },
+  {
+   "exchange": 2,
+   "hist": 2,
+   "median": 7.0,
+   "never": 0
+  }
+ ],
+ "verdict": {
+  "B1": true,
+  "B2_mean": true,
+  "B2_precision": true,
+  "B3": true,
+  "two_history": "PASS"
+ },
+ "wall_s": 4874.291339874268,
+ "budget_used_s": 4958.040223836899
+}

@@ -1,0 +1,26 @@
+{
+ "frozen_at": "2026-09-30, before any E1.2 run",
+ "plan": "cell-cell/工作报告/MFS0-E1.1独立研判与E1.2反馈闭环方案_2026-09-30.md §5, §7A",
+ "carrier_semantics": "probability memory (plan §4: reversible route; replaces the open P1 ruling item)",
+ "policies": {
+   "fixed_0.5": "m = 0.5", "fixed_1": "m = 1", "fixed_1.5": "m = 1.5",
+   "feedback": "delta_n = o_n - p_hat_n; h_{n+1} = 0.8 h_n + 0.2 delta_n; m_n = 0.5 + min(1, |h_n|/0.2); h_0 = 0; m_n fixed before outcome n"
+ },
+ "reference_model": "z_{n+1} = z_n + (1 - 0.9^{m_n}) (Y_n - z_n); p_hat_n = z_n; o_n = Y_n (ideal readout); z_0 = 0.5",
+ "streams": 64, "seed_outcomes": "random.Random(20270101 + s)", "seed_event_times": "random.Random(20770101 + s) (d_L ~ U[0.10,0.80], recorded, unused by the ideal model)",
+ "seed_check": "no 2027xxxx seed used in v4 / E1.1 code (only float digits matched)",
+ "tasks": {"stable": {"p": [0.2, 0.5, 0.8], "n": 360, "eval": "last 240"},
+           "reversal": {"p": [0.8, 0.2, 0.8], "n_per_segment": 120, "eval": "30 experiences after each switch (n=120..149, 240..269)"}},
+ "draw_order": "per stream, outcomes drawn sequentially: stable 0.2, stable 0.5, stable 0.8, reversal; identical sequences for all policies",
+ "loss": "(p_hat - p_true)^2, evaluator only; controller never sees p",
+ "t_crit_df63_0975": 1.998341,
+ "criteria": {
+   "A1": "stable, each p: |cross-stream mean of window-mean p_hat - p| <= 0.03 and t half width <= 0.03 (feedback policy)",
+   "A2": "stable, each p: mean MSE(feedback) - mean MSE(fixed_1) <= 0.005",
+   "A3": "reversal: mean MSE(feedback) <= 0.9 * mean MSE(fixed_1) and paired (feedback - fixed_1) 95% t upper bound < 0",
+   "A4": "no fixed m in {0.5,1,1.5} with stable_loss <= feedback AND reversal_loss <= feedback, stable_loss = mean over the three p of window MSE",
+   "pass": "A1 and A2 and A3 and A4 -> CANDIDATE_JUSTIFIED (go to B); else POLICY_NOT_JUSTIFIED (round ends)"
+ },
+ "alt_fixed_for_C": "argmin over m in {0.5,1.5} of 0.5*stable_loss + 0.5*reversal_loss, chosen here before any device run",
+ "report_only": ["mean m", "saturation fraction (m=1.5)", "recovery count (first cross 0.5)", "Brier vs Y", "bias", "Cov(alpha,Y)", "Cov(alpha,z)"]
+}

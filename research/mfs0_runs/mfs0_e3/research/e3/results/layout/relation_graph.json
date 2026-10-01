@@ -1,0 +1,338 @@
+{
+ "domain_A_L": {
+  "splits": {
+   "0": "C1",
+   "1": "C1",
+   "2": "C1"
+  },
+  "hyperedges": [
+   {
+    "id": "e_m0",
+    "kind": "marginal",
+    "inputs": [
+     {
+      "port": "W0",
+      "type": "gate-accepted entry pulse",
+      "unit": "0/1 per tick"
+     }
+    ],
+    "condition": null,
+    "output": {
+     "port": "L",
+     "window": "[s, s+H)",
+     "H_s": 1.0397207708399179
+    },
+    "local_state": "slot pair (T,O) of history 0",
+    "carrier": "m0",
+    "write_route": "settle window (¦È_lo<T<¦È_hi) ¡Á O-polarity ¡ú marginal node",
+    "cost": "E2"
+   },
+   {
+    "id": "e_00",
+    "kind": "conditional",
+    "inputs": [
+     {
+      "port": "W0",
+      "type": "gate-accepted entry pulse",
+      "unit": "0/1 per tick"
+     },
+     {
+      "port": "trace Q",
+      "type": "RC trace voltage via comparator",
+      "unit": "V"
+     }
+    ],
+    "condition": {
+     "candidate": "C1",
+     "network": [
+      [
+       "Q"
+      ]
+     ],
+     "value": 0,
+     "visible": "step start (x(s^-)), before this step¡¯s pulses"
+    },
+    "output": {
+     "port": "L",
+     "window": "[s, s+H)",
+     "H_s": 1.0397207708399179
+    },
+    "local_state": "slot (T,O,K) of history 0; K latched at admission",
+    "carrier": "c00",
+    "write_route": "K read (comparator) ¡ú route switch ¡ú leaf node",
+    "cost": {
+     "op": {
+      "switches": 0,
+      "inverter_comparators": 0,
+      "pulldown": 0,
+      "output_comparator": 0
+     },
+     "per_slot": "K cap + 3 comparators + 3 switches + 10 write FETs per leaf pair"
+    }
+   },
+   {
+    "id": "e_01",
+    "kind": "conditional",
+    "inputs": [
+     {
+      "port": "W0",
+      "type": "gate-accepted entry pulse",
+      "unit": "0/1 per tick"
+     },
+     {
+      "port": "trace Q",
+      "type": "RC trace voltage via comparator",
+      "unit": "V"
+     }
+    ],
+    "condition": {
+     "candidate": "C1",
+     "network": [
+      [
+       "Q"
+      ]
+     ],
+     "value": 1,
+     "visible": "step start (x(s^-)), before this step¡¯s pulses"
+    },
+    "output": {
+     "port": "L",
+     "window": "[s, s+H)",
+     "H_s": 1.0397207708399179
+    },
+    "local_state": "slot (T,O,K) of history 0; K latched at admission",
+    "carrier": "c01",
+    "write_route": "K read (comparator) ¡ú route switch ¡ú leaf node",
+    "cost": {
+     "op": {
+      "switches": 0,
+      "inverter_comparators": 0,
+      "pulldown": 0,
+      "output_comparator": 0
+     },
+     "per_slot": "K cap + 3 comparators + 3 switches + 10 write FETs per leaf pair"
+    }
+   },
+   {
+    "id": "e_m1",
+    "kind": "marginal",
+    "inputs": [
+     {
+      "port": "W1",
+      "type": "gate-accepted entry pulse",
+      "unit": "0/1 per tick"
+     }
+    ],
+    "condition": null,
+    "output": {
+     "port": "L",
+     "window": "[s, s+H)",
+     "H_s": 1.0397207708399179
+    },
+    "local_state": "slot pair (T,O) of history 1",
+    "carrier": "m1",
+    "write_route": "settle window (¦È_lo<T<¦È_hi) ¡Á O-polarity ¡ú marginal node",
+    "cost": "E2"
+   },
+   {
+    "id": "e_10",
+    "kind": "conditional",
+    "inputs": [
+     {
+      "port": "W1",
+      "type": "gate-accepted entry pulse",
+      "unit": "0/1 per tick"
+     },
+     {
+      "port": "trace Q",
+      "type": "RC trace voltage via comparator",
+      "unit": "V"
+     }
+    ],
+    "condition": {
+     "candidate": "C1",
+     "network": [
+      [
+       "Q"
+      ]
+     ],
+     "value": 0,
+     "visible": "step start (x(s^-)), before this step¡¯s pulses"
+    },
+    "output": {
+     "port": "L",
+     "window": "[s, s+H)",
+     "H_s": 1.0397207708399179
+    },
+    "local_state": "slot (T,O,K) of history 1; K latched at admission",
+    "carrier": "c10",
+    "write_route": "K read (comparator) ¡ú route switch ¡ú leaf node",
+    "cost": {
+     "op": {
+      "switches": 0,
+      "inverter_comparators": 0,
+      "pulldown": 0,
+      "output_comparator": 0
+     },
+     "per_slot": "K cap + 3 comparators + 3 switches + 10 write FETs per leaf pair"
+    }
+   },
+   {
+    "id": "e_11",
+    "kind": "conditional",
+    "inputs": [
+     {
+      "port": "W1",
+      "type": "gate-accepted entry pulse",
+      "unit": "0/1 per tick"
+     },
+     {
+      "port": "trace Q",
+      "type": "RC trace voltage via comparator",
+      "unit": "V"
+     }
+    ],
+    "condition": {
+     "candidate": "C1",
+     "network": [
+      [
+       "Q"
+      ]
+     ],
+     "value": 1,
+     "visible": "step start (x(s^-)), before this step¡¯s pulses"
+    },
+    "output": {
+     "port": "L",
+     "window": "[s, s+H)",
+     "H_s": 1.0397207708399179
+    },
+    "local_state": "slot (T,O,K) of history 1; K latched at admission",
+    "carrier": "c11",
+    "write_route": "K read (comparator) ¡ú route switch ¡ú leaf node",
+    "cost": {
+     "op": {
+      "switches": 0,
+      "inverter_comparators": 0,
+      "pulldown": 0,
+      "output_comparator": 0
+     },
+     "per_slot": "K cap + 3 comparators + 3 switches + 10 write FETs per leaf pair"
+    }
+   },
+   {
+    "id": "e_m2",
+    "kind": "marginal",
+    "inputs": [
+     {
+      "port": "W2",
+      "type": "gate-accepted entry pulse",
+      "unit": "0/1 per tick"
+     }
+    ],
+    "condition": null,
+    "output": {
+     "port": "L",
+     "window": "[s, s+H)",
+     "H_s": 1.0397207708399179
+    },
+    "local_state": "slot pair (T,O) of history 2",
+    "carrier": "m2",
+    "write_route": "settle window (¦È_lo<T<¦È_hi) ¡Á O-polarity ¡ú marginal node",
+    "cost": "E2"
+   },
+   {
+    "id": "e_20",
+    "kind": "conditional",
+    "inputs": [
+     {
+      "port": "W2",
+      "type": "gate-accepted entry pulse",
+      "unit": "0/1 per tick"
+     },
+     {
+      "port": "trace Q",
+      "type": "RC trace voltage via comparator",
+      "unit": "V"
+     }
+    ],
+    "condition": {
+     "candidate": "C1",
+     "network": [
+      [
+       "Q"
+      ]
+     ],
+     "value": 0,
+     "visible": "step start (x(s^-)), before this step¡¯s pulses"
+    },
+    "output": {
+     "port": "L",
+     "window": "[s, s+H)",
+     "H_s": 1.0397207708399179
+    },
+    "local_state": "slot (T,O,K) of history 2; K latched at admission",
+    "carrier": "c20",
+    "write_route": "K read (comparator) ¡ú route switch ¡ú leaf node",
+    "cost": {
+     "op": {
+      "switches": 0,
+      "inverter_comparators": 0,
+      "pulldown": 0,
+      "output_comparator": 0
+     },
+     "per_slot": "K cap + 3 comparators + 3 switches + 10 write FETs per leaf pair"
+    }
+   },
+   {
+    "id": "e_21",
+    "kind": "conditional",
+    "inputs": [
+     {
+      "port": "W2",
+      "type": "gate-accepted entry pulse",
+      "unit": "0/1 per tick"
+     },
+     {
+      "port": "trace Q",
+      "type": "RC trace voltage via comparator",
+      "unit": "V"
+     }
+    ],
+    "condition": {
+     "candidate": "C1",
+     "network": [
+      [
+       "Q"
+      ]
+     ],
+     "value": 1,
+     "visible": "step start (x(s^-)), before this step¡¯s pulses"
+    },
+    "output": {
+     "port": "L",
+     "window": "[s, s+H)",
+     "H_s": 1.0397207708399179
+    },
+    "local_state": "slot (T,O,K) of history 2; K latched at admission",
+    "carrier": "c21",
+    "write_route": "K read (comparator) ¡ú route switch ¡ú leaf node",
+    "cost": {
+     "op": {
+      "switches": 0,
+      "inverter_comparators": 0,
+      "pulldown": 0,
+      "output_comparator": 0
+     },
+     "per_slot": "K cap + 3 comparators + 3 switches + 10 write FETs per leaf pair"
+    }
+   }
+  ]
+ },
+ "domain_X": {
+  "splits": {
+   "0": "C6"
+  },
+  "note": "pre-specified expressive-capacity task (plan ¡ì10.2)"
+ }
+}

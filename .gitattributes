@@ -1,1 +1,3 @@
 * text=auto eol=lf
+# MFS0 independent-copy packages: byte-exact (frozen sha256/sha16 code hashes must survive checkout)
+research/mfs0_runs/** -text

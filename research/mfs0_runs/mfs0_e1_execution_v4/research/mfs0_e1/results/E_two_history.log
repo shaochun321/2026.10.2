@@ -1,0 +1,145 @@
+stream 0 wall 115.9s -> projected 23.2 min
+{
+ "B1_max_cross_write": 0.0,
+ "B2": [
+  {
+   "phase": 1,
+   "hist": 1,
+   "p": 0.8,
+   "mean_pred": 0.7764843667191588,
+   "ci_half": 0.03398956499109702,
+   "ok": true,
+   "precise": false
+  },
+  {
+   "phase": 1,
+   "hist": 2,
+   "p": 0.2,
+   "mean_pred": 0.19304612230476148,
+   "ci_half": 0.01753845535057637,
+   "ok": true,
+   "precise": true
+  },
+  {
+   "phase": 2,
+   "hist": 1,
+   "p": 0.2,
+   "mean_pred": 0.20632140273078642,
+   "ci_half": 0.03498253830685613,
+   "ok": true,
+   "precise": false
+  },
+  {
+   "phase": 2,
+   "hist": 2,
+   "p": 0.8,
+   "mean_pred": 0.7636846133565841,
+   "ci_half": 0.044327717023410755,
+   "ok": true,
+   "precise": false
+  },
+  {
+   "phase": 3,
+   "hist": 1,
+   "p": 0.8,
+   "mean_pred": 0.8414944755728948,
+   "ci_half": 0.02849372054266688,
+   "ok": true,
+   "precise": true
+  },
+  {
+   "phase": 3,
+   "hist": 2,
+   "p": 0.2,
+   "mean_pred": 0.17173034888839905,
+   "ci_half": 0.023865480389040322,
+   "ok": true,
+   "precise": true
+  }
+ ],
+ "B3": [
+  {
+   "exchange": 1,
+   "hist": 1,
+   "median": 7.0,
+   "never": 0
+  },
+  {
+   "exchange": 1,
+   "hist": 2,
+   "median": 9.5,
+   "never": 0
+  },
+  {
+   "exchange": 2,
+   "hist": 1,
+   "median": 9.0,
+   "never": 0
+  },
+  {
+   "exchange": 2,
+   "hist": 2,
+   "median": 7.0,
+   "never": 0
+  }
+ ],
+ "brier": [
+  {
+   "phase": 1,
+   "hist": 1,
+   "brier_device": 0.19125735482657832,
+   "brier_shared": 0.2725162263396533,
+   "brier_fixed05": 0.25,
+   "brier_oracle": 0.15999999999999998
+  },
+  {
+   "phase": 1,
+   "hist": 2,
+   "brier_device": 0.15798177858819512,
+   "brier_shared": 0.26675491106118704,
+   "brier_fixed05": 0.25,
+   "brier_oracle": 0.16000000000000003
+  },
+  {
+   "phase": 2,
+   "hist": 1,
+   "brier_device": 0.15401100078652402,
+   "brier_shared": 0.24059839373327385,
+   "brier_fixed05": 0.25,
+   "brier_oracle": 0.16000000000000003
+  },
+  {
+   "phase": 2,
+   "hist": 2,
+   "brier_device": 0.1780671569678208,
+   "brier_shared": 0.27924287203211007,
+   "brier_fixed05": 0.25,
+   "brier_oracle": 0.15999999999999998
+  },
+  {
+   "phase": 3,
+   "hist": 1,
+   "brier_device": 0.13258552259594353,
+   "brier_shared": 0.27383359635830357,
+   "brier_fixed05": 0.25,
+   "brier_oracle": 0.15999999999999998
+  },
+  {
+   "phase": 3,
+   "hist": 2,
+   "brier_device": 0.14180492630273295,
+   "brier_shared": 0.2506768150593944,
+   "brier_fixed05": 0.25,
+   "brier_oracle": 0.16000000000000003
+  }
+ ],
+ "verdict": {
+  "B1": true,
+  "B2": true,
+  "B2_precise": false,
+  "B3": true,
+  "two_history": "INCONCLUSIVE"
+ },
+ "wall_s": 1705.7464489936829,
+ "budget_used_s": 2965.9432802200317
+}

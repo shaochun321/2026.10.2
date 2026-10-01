@@ -1,0 +1,30 @@
+{
+ "A": {
+  "B": {
+   "records": true,
+   "final_w": true
+  },
+  "C": {
+   "records": true,
+   "final_w": true
+  },
+  "R": {
+   "records": true,
+   "final_w": true
+  }
+ },
+ "X": {
+  "B": {
+   "records": true,
+   "final_w": true
+  },
+  "C": {
+   "records": true,
+   "final_w": true
+  },
+  "R": {
+   "records": true,
+   "final_w": true
+  }
+ }
+}

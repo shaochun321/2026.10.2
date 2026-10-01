@@ -1,0 +1,60 @@
+{
+ "source_commit": "4d4e424decefb1ee5698f7dbca4e62594b41d8e4",
+ "export": "git archive 4d4e424 nexus_v1 tss governance research (from read-only mesquite-gecko object store; no index/worktree write)",
+ "excluded": {
+  "__pycache__ dirs": 8,
+  "pyc files": 173,
+  "reason": "plan v4 ¡ì2"
+ },
+ "not_used": {
+  "mfs0-e1 branch predictive_memory_device.py (36bbe81)": "violates v4 ¡ì3/¡ì4.2, see design.md ¡ì7",
+  "E0 eligibility chain tau_e=0.3s": "eligibility must outlast the observation window; design.md ¡ì4"
+ },
+ "E0_reference": {
+  "effective_terminal": "A_CONDITIONAL + HOLD_EXPOSURE",
+  "used_items": [
+   "WRITE_DT_CORRECTION precedent",
+   "TIER2_LIMITATION precedent"
+  ]
+ },
+ "templates": {
+  "W": {
+   "file": "research/d2_recursive_v1/data/relation_occurrence_manifest.csv",
+   "row": "cal_C3_m",
+   "layer": "RelationOccurrencePortV1",
+   "t_up": 2617,
+   "t_rearm": 3971,
+   "unit": "step, dt=0.001 s",
+   "duration_s": 1.354,
+   "occurrence_id": "relation.r_rho:d2_rho0#e1"
+  },
+  "LATER": {
+   "file": "research/d2_recursive_v1/data/site23_occurrence_manifest.csv",
+   "row": "s23_ov",
+   "layer": "site23 PortWindow",
+   "t_up": 2927,
+   "t_rearm": 3566,
+   "unit": "step, dt=0.001 s",
+   "duration_s": 0.639,
+   "occurrence_id": "occ.thermal:thermpt23_warm#e1"
+  },
+  "transform": "TEMPLATE_TRANSLATION: drive = build_phase_drive ramp on the translated window; duration/amplitude/shape unchanged; no stretch, scale or clip",
+  "translation_rule": "W window starts at cycle_t0+0.10 s; LATER at cycle_t0+0.10+d_L, d_L~U[0.10,0.80] s, only if y=1 (generator side)",
+  "equivalence_check": "ramp == build_phase_drive at dt=0.001: max|diff| = 0 (a_probe_transduction.py)",
+  "entry_boundary": "RelationEventAdapter -> PhysicalEntryGate b_up; measured exactly 1 entry per template at dt, dt/2, dt/4 (latency 1.5-2.25 ms)",
+  "qualification": "CAUSAL_REPLAY_REFERENCE + TEMPLATE_TRANSLATION; single-window qualifications are not inherited by the new composed streams"
+ },
+ "dependency_sha16": {
+  "nexus_v1/components/semiconductor.py": "fc6eb11b02c32748",
+  "nexus_v1/components/neuron.py": "0aa526782bc952c3",
+  "nexus_v1/circuit/bundle.py": "bca4b2d177c43d84",
+  "tss/relations/relation_event_adapter.py": "ea4fb0f1e1721708",
+  "tss/relations/entry_gate.py": "a6653b37187c5587",
+  "tss/adapters/relation_replay_adapter.py": "67787810ad68093b",
+  "nexus_v1/components/structural_address.py": "2ecd40c543fca8be",
+  "research/d2_recursive_v1/d21_common.py": "5e5e8d62a15f4c23",
+  "research/d2_relation_v0/d2_common.py": "c1eb06ab7ae491e1",
+  "research/d2_recursive_v1/data/relation_occurrence_manifest.csv": "46d80979fc65ba2b",
+  "research/d2_recursive_v1/data/site23_occurrence_manifest.csv": "c81d2405a1b1487a"
+ }
+}
