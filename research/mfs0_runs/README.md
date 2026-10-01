@@ -36,6 +36,8 @@ PYTHONHASHSEED=0 PYTHONIOENCODING=utf-8 python -B -c "import run_e3; run_e3.load
 
 `PYTHONHASHSEED=0` is mandatory: live-bridge input amplitudes depend on `hash()`.
 
+To export outside the repo, use `git archive HEAD research/mfs0_runs/<dir>` with the full path. **Do not use `git archive HEAD:research/mfs0_runs/<dir>`.** A subtree export matches `.gitattributes` against paths relative to the subtree, so the `-text` rule no longer applies. CRLF files are then converted to LF, and the frozen hash check fails (measured: 31/162 files differ). Exporting with the full path was verified: 162/162 files match the manifest and `load_prereg()` passes.
+
 Formal results (`results/**.pkl`) and the cost ledgers (`runs.jsonl`) are committed as evidence. The run logs are `*.log` files; they were force-added despite the repo-wide `*.log` ignore.
 
 The `results/**/X/` domain directories were also force-added. The repo-wide `x/` backup-folder rule matches `X/` because Windows paths are case-insensitive, so any later addition under `X/` needs `git add -f`.
